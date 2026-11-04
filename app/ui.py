@@ -66,7 +66,8 @@ p, li, label {{ color:#DCE0E8; }}
         padding:16px 18px; height:100%; position:relative; overflow:hidden; animation: rise .5s ease-out both;
         transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }}
 .kpi:hover {{ transform: translateY(-3px); border-color: var(--edge); box-shadow: 0 10px 30px -12px var(--edge); }}
-.kpi .l {{ color:{MUTED}; font-size:.8rem; font-weight:500; padding-right:64px; }}
+.kpi .l {{ color:{MUTED}; font-size:.8rem; font-weight:500; }}
+.kpi.deco .l {{ padding-right:58px; }}
 .kpi .v {{ font-size:1.95rem; font-weight:700; letter-spacing:-0.025em; line-height:1.25; color:#FFFFFF; }}
 .kpi .s {{ color:{MUTED}; font-size:.76rem; }}
 .kpi .bar {{ position:absolute; left:0; top:14px; bottom:14px; width:3px; border-radius:3px; box-shadow: 0 0 12px var(--edge); }}
@@ -145,7 +146,8 @@ def kpi(col, label_: str, value: str, sub: str = "", color: str = BLUE, count: i
     shown = f'<span class="cnt" style="--to:{int(count)}"></span>{suffix}' if count is not None else value
     extra = (_spark(spark, color) if spark is not None and len(spark) > 1 else "") + (_ring(ring, color) if ring is not None else "")
     vstyle = ' style="font-size:1.2rem;line-height:1.35;padding:4px 0"' if count is None and len(value) > 14 else ""
-    col.markdown(f'<div class="kpi" style="--tint:{rgba(color, .13)};--edge:{rgba(color, .55)}"><div class="bar" style="background:{color}"></div>'
+    cls = "kpi deco" if extra else "kpi"
+    col.markdown(f'<div class="{cls}" style="--tint:{rgba(color, .13)};--edge:{rgba(color, .55)}"><div class="bar" style="background:{color}"></div>'
                  f'<div class="l">{label_}</div><div class="v"{vstyle}>{shown}</div><div class="s">{sub}</div>{extra}</div>',
                  unsafe_allow_html=True)
 
