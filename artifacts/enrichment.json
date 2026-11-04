@@ -1,0 +1,467 @@
+{
+ "rows": [
+  {
+   "model": "Logistic Regression",
+   "variant": "Baseline",
+   "pr_auc": 0.2745208215335133,
+   "pr_auc_ci": [
+    0.25371752523513297,
+    0.3001238077918082
+   ],
+   "recall_at_budget": 0.34175084175084175,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "baseline"
+  },
+  {
+   "model": "Logistic Regression",
+   "variant": "+ Profiles",
+   "pr_auc": 0.2636370932408357,
+   "pr_auc_ci": [
+    0.24529945803377695,
+    0.28621190787364864
+   ],
+   "recall_at_budget": 0.3468013468013468,
+   "gain": -0.010993196248977476,
+   "gain_ci": [
+    -0.020360422058466922,
+    -0.0013742326872362538
+   ],
+   "verdict": "hurts"
+  },
+  {
+   "model": "Logistic Regression",
+   "variant": "+ Sequences",
+   "pr_auc": 0.27309493943886043,
+   "pr_auc_ci": [
+    0.25225121923785393,
+    0.29774427212508664
+   ],
+   "recall_at_budget": 0.3383838383838384,
+   "gain": -0.0016917185115277024,
+   "gain_ci": [
+    -0.005333850806323886,
+    0.0020179390240670915
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "Logistic Regression",
+   "variant": "+ Both",
+   "pr_auc": 0.2613048096006168,
+   "pr_auc_ci": [
+    0.242956982848351,
+    0.283086345452997
+   ],
+   "recall_at_budget": 0.34175084175084175,
+   "gain": -0.013303628499501174,
+   "gain_ci": [
+    -0.023382354847905303,
+    -0.0032735474061974597
+   ],
+   "verdict": "hurts"
+  },
+  {
+   "model": "Naive Bayes",
+   "variant": "Baseline",
+   "pr_auc": 0.22466015027026534,
+   "pr_auc_ci": [
+    0.2093894591216584,
+    0.24630582746110963
+   ],
+   "recall_at_budget": 0.26430976430976433,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "baseline"
+  },
+  {
+   "model": "Naive Bayes",
+   "variant": "+ Profiles",
+   "pr_auc": 0.22564232801300493,
+   "pr_auc_ci": [
+    0.2096459110521433,
+    0.24735604179530968
+   ],
+   "recall_at_budget": 0.25757575757575757,
+   "gain": 0.0007903196354497392,
+   "gain_ci": [
+    -0.008208153980492018,
+    0.008560736602797516
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "Naive Bayes",
+   "variant": "+ Sequences",
+   "pr_auc": 0.22428046771832166,
+   "pr_auc_ci": [
+    0.20838617761316022,
+    0.24656452023246436
+   ],
+   "recall_at_budget": 0.26430976430976433,
+   "gain": -0.0003700302604505733,
+   "gain_ci": [
+    -0.002478234837855619,
+    0.0018979482592450649
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "Naive Bayes",
+   "variant": "+ Both",
+   "pr_auc": 0.22491829551717146,
+   "pr_auc_ci": [
+    0.20863701896951642,
+    0.24658408921178623
+   ],
+   "recall_at_budget": 0.25925925925925924,
+   "gain": -2.427345873241657e-05,
+   "gain_ci": [
+    -0.008890550069430856,
+    0.007743223115143283
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "LDA",
+   "variant": "Baseline",
+   "pr_auc": 0.2779997125056364,
+   "pr_auc_ci": [
+    0.2560418310371208,
+    0.3044638270898406
+   ],
+   "recall_at_budget": 0.3451178451178451,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "baseline"
+  },
+  {
+   "model": "LDA",
+   "variant": "+ Profiles",
+   "pr_auc": 0.26632979935220596,
+   "pr_auc_ci": [
+    0.24773661034052827,
+    0.28860678235655146
+   ],
+   "recall_at_budget": 0.34175084175084175,
+   "gain": -0.011859581172131208,
+   "gain_ci": [
+    -0.021804171351399435,
+    -0.0018427403317336506
+   ],
+   "verdict": "hurts"
+  },
+  {
+   "model": "LDA",
+   "variant": "+ Sequences",
+   "pr_auc": 0.2756200042110076,
+   "pr_auc_ci": [
+    0.2545399776415872,
+    0.30148181643209526
+   ],
+   "recall_at_budget": 0.3400673400673401,
+   "gain": -0.002317896079737106,
+   "gain_ci": [
+    -0.00632157406059118,
+    0.001879158320232354
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "LDA",
+   "variant": "+ Both",
+   "pr_auc": 0.26381677991237124,
+   "pr_auc_ci": [
+    0.2455275987623587,
+    0.2867717192560043
+   ],
+   "recall_at_budget": 0.3400673400673401,
+   "gain": -0.014255970184806205,
+   "gain_ci": [
+    -0.024315502111303886,
+    -0.004030071614010972
+   ],
+   "verdict": "hurts"
+  },
+  {
+   "model": "K-Nearest Neighbours",
+   "variant": "Baseline",
+   "pr_auc": 0.24231442621265442,
+   "pr_auc_ci": [
+    0.2266128118933592,
+    0.2652493298539009
+   ],
+   "recall_at_budget": 0.30303030303030304,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "baseline"
+  },
+  {
+   "model": "K-Nearest Neighbours",
+   "variant": "+ Profiles",
+   "pr_auc": 0.2371895797418515,
+   "pr_auc_ci": [
+    0.21931034011069167,
+    0.2593182924023013
+   ],
+   "recall_at_budget": 0.29292929292929293,
+   "gain": -0.005353761119942597,
+   "gain_ci": [
+    -0.015849477991756185,
+    0.0054350925924897
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "K-Nearest Neighbours",
+   "variant": "+ Sequences",
+   "pr_auc": 0.24137690643860904,
+   "pr_auc_ci": [
+    0.2237652509828199,
+    0.2645773819194572
+   ],
+   "recall_at_budget": 0.3047138047138047,
+   "gain": -0.0009101912400890017,
+   "gain_ci": [
+    -0.008696488144439678,
+    0.006701916263955891
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "K-Nearest Neighbours",
+   "variant": "+ Both",
+   "pr_auc": 0.24066267546720635,
+   "pr_auc_ci": [
+    0.2230005350218417,
+    0.26264919938234177
+   ],
+   "recall_at_budget": 0.29124579124579125,
+   "gain": -0.0019531950101441724,
+   "gain_ci": [
+    -0.013008359892306219,
+    0.00921907490729404
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "Decision Tree",
+   "variant": "Baseline",
+   "pr_auc": 0.2395542499312592,
+   "pr_auc_ci": [
+    0.22243621984186873,
+    0.2586052737678123
+   ],
+   "recall_at_budget": 0.28619528619528617,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "baseline"
+  },
+  {
+   "model": "Decision Tree",
+   "variant": "+ Profiles",
+   "pr_auc": 0.2432094326097496,
+   "pr_auc_ci": [
+    0.22583487067746225,
+    0.26332317324709065
+   ],
+   "recall_at_budget": 0.29124579124579125,
+   "gain": 0.003588691595477348,
+   "gain_ci": [
+    -0.001730361829576784,
+    0.009133443143494593
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "Decision Tree",
+   "variant": "+ Sequences",
+   "pr_auc": 0.2395542499312592,
+   "pr_auc_ci": [
+    0.22243621984186873,
+    0.2586052737678123
+   ],
+   "recall_at_budget": 0.28619528619528617,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "Decision Tree",
+   "variant": "+ Both",
+   "pr_auc": 0.2432094326097496,
+   "pr_auc_ci": [
+    0.22583487067746225,
+    0.26332317324709065
+   ],
+   "recall_at_budget": 0.29124579124579125,
+   "gain": 0.003588691595477348,
+   "gain_ci": [
+    -0.001730361829576784,
+    0.009133443143494593
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "SVM (RBF)",
+   "variant": "Baseline",
+   "pr_auc": 0.28312864728771947,
+   "pr_auc_ci": [
+    0.2621168239334251,
+    0.3104234855557331
+   ],
+   "recall_at_budget": 0.3484848484848485,
+   "gain": 0.0,
+   "gain_ci": [
+    0.0,
+    0.0
+   ],
+   "verdict": "baseline"
+  },
+  {
+   "model": "SVM (RBF)",
+   "variant": "+ Profiles",
+   "pr_auc": 0.28238125601696645,
+   "pr_auc_ci": [
+    0.261346128372764,
+    0.30967492766792354
+   ],
+   "recall_at_budget": 0.3468013468013468,
+   "gain": -0.0006256000237104908,
+   "gain_ci": [
+    -0.006775079793527683,
+    0.005798361842604784
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "SVM (RBF)",
+   "variant": "+ Sequences",
+   "pr_auc": 0.28308113934673196,
+   "pr_auc_ci": [
+    0.2619983811051657,
+    0.3109191821277596
+   ],
+   "recall_at_budget": 0.3434343434343434,
+   "gain": -7.248764469524071e-05,
+   "gain_ci": [
+    -0.0044871149837574,
+    0.0042842750910458945
+   ],
+   "verdict": "no measurable effect"
+  },
+  {
+   "model": "SVM (RBF)",
+   "variant": "+ Both",
+   "pr_auc": 0.28328747975900653,
+   "pr_auc_ci": [
+    0.2619000787903503,
+    0.3115572723612826
+   ],
+   "recall_at_budget": 0.34175084175084175,
+   "gain": 0.0003553284336773066,
+   "gain_ci": [
+    -0.006835273597039506,
+    0.00824451600586607
+   ],
+   "verdict": "no measurable effect"
+  }
+ ],
+ "standalone": [
+  {
+   "score": "Report rate of the alert's profile (K-Means)",
+   "pr_auc": 0.1917433209621451,
+   "pr_auc_ci": [
+    0.18298332161357367,
+    0.20075491256606093
+   ],
+   "recall_at_budget": 0.2239057239057239
+  },
+  {
+   "score": "Unusualness under the Gaussian mixture",
+   "pr_auc": 0.17899432499872225,
+   "pr_auc_ci": [
+    0.16929360346490183,
+    0.19453053595659253
+   ],
+   "recall_at_budget": 0.19528619528619529
+  },
+  {
+   "score": "Sequence log-likelihood ratio (HMM)",
+   "pr_auc": 0.22333812988828314,
+   "pr_auc_ci": [
+    0.20670872609354474,
+    0.24465664455378913
+   ],
+   "recall_at_budget": 0.265993265993266
+  },
+  {
+   "score": "Unusualness vs normal sequences (HMM)",
+   "pr_auc": 0.1915822510830233,
+   "pr_auc_ci": [
+    0.1793957324120835,
+    0.20933405424584378
+   ],
+   "recall_at_budget": 0.22053872053872053
+  },
+  {
+   "score": "Regime shift in last 30 days (HMM)",
+   "pr_auc": 0.1856005664053281,
+   "pr_auc_ci": [
+    0.17490511183694865,
+    0.20216587315304232
+   ],
+   "recall_at_budget": 0.20202020202020202
+  }
+ ],
+ "base_rate_test": 0.18187385180649113,
+ "n_test": 3266,
+ "added": {
+  "Profiles": [
+   "gmm_p0",
+   "gmm_p1",
+   "gmm_p2",
+   "gmm_p3",
+   "gmm_p4",
+   "gmm_p5",
+   "gmm_p6",
+   "gmm_p7",
+   "gmm_p8",
+   "gmm_p9",
+   "km_0",
+   "km_1",
+   "km_2",
+   "gmm_density",
+   "gmm_entropy"
+  ],
+  "Sequences": [
+   "hmm_llr",
+   "hmm_normal_ll",
+   "hmm_switch_rate",
+   "hmm_regime_shift",
+   "hmm_occ_0",
+   "hmm_occ_1",
+   "hmm_occ_2",
+   "hmm_occ_3",
+   "hmm_occ_4"
+  ]
+ }
+}

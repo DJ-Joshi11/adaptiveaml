@@ -1,0 +1,360 @@
+{
+ "models": {
+  "Logistic Regression": {
+   "best_params": {
+    "C": 0.01
+   },
+   "cv_pr_auc": 0.24959303762250432,
+   "fit_seconds": 4.9,
+   "grid": [
+    {
+     "params": {
+      "C": 0.01
+     },
+     "cv_pr_auc": 0.24959303762250432
+    },
+    {
+     "params": {
+      "C": 0.1
+     },
+     "cv_pr_auc": 0.24799607982491498
+    },
+    {
+     "params": {
+      "C": 1
+     },
+     "cv_pr_auc": 0.24594360002376262
+    },
+    {
+     "params": {
+      "C": 10
+     },
+     "cv_pr_auc": 0.2459197507608439
+    }
+   ],
+   "default_imbalance": "class weights"
+  },
+  "Naive Bayes": {
+   "best_params": {
+    "var_smoothing": 0.1
+   },
+   "cv_pr_auc": 0.19677049438799252,
+   "fit_seconds": 2.4,
+   "grid": [
+    {
+     "params": {
+      "var_smoothing": 1e-09
+     },
+     "cv_pr_auc": 0.19631350402405148
+    },
+    {
+     "params": {
+      "var_smoothing": 1e-06
+     },
+     "cv_pr_auc": 0.19631350402405148
+    },
+    {
+     "params": {
+      "var_smoothing": 0.001
+     },
+     "cv_pr_auc": 0.19631555784795948
+    },
+    {
+     "params": {
+      "var_smoothing": 0.1
+     },
+     "cv_pr_auc": 0.19677049438799252
+    }
+   ],
+   "default_imbalance": "none (threshold only)"
+  },
+  "LDA": {
+   "best_params": {
+    "shrinkage": 0.1
+   },
+   "cv_pr_auc": 0.248506892260425,
+   "fit_seconds": 2.6,
+   "grid": [
+    {
+     "params": {
+      "shrinkage": "auto"
+     },
+     "cv_pr_auc": 0.24638416653950443
+    },
+    {
+     "params": {
+      "shrinkage": 0.1
+     },
+     "cv_pr_auc": 0.248506892260425
+    },
+    {
+     "params": {
+      "shrinkage": 0.5
+     },
+     "cv_pr_auc": 0.24794345581901642
+    },
+    {
+     "params": {
+      "shrinkage": 0.9
+     },
+     "cv_pr_auc": 0.22872902601377842
+    }
+   ],
+   "default_imbalance": "none (threshold only)"
+  },
+  "K-Nearest Neighbours": {
+   "best_params": {
+    "n_neighbors": 201
+   },
+   "cv_pr_auc": 0.21575142778129677,
+   "fit_seconds": 7.3,
+   "grid": [
+    {
+     "params": {
+      "n_neighbors": 15
+     },
+     "cv_pr_auc": 0.20240625663680414
+    },
+    {
+     "params": {
+      "n_neighbors": 51
+     },
+     "cv_pr_auc": 0.20927953411659841
+    },
+    {
+     "params": {
+      "n_neighbors": 101
+     },
+     "cv_pr_auc": 0.21368809130516922
+    },
+    {
+     "params": {
+      "n_neighbors": 201
+     },
+     "cv_pr_auc": 0.21575142778129677
+    }
+   ],
+   "default_imbalance": "none (threshold only)"
+  },
+  "Decision Tree": {
+   "best_params": {
+    "max_depth": 5,
+    "min_samples_leaf": 100
+   },
+   "cv_pr_auc": 0.21593678210568826,
+   "fit_seconds": 15.7,
+   "grid": [
+    {
+     "params": {
+      "max_depth": 3,
+      "min_samples_leaf": 20
+     },
+     "cv_pr_auc": 0.20166525725995454
+    },
+    {
+     "params": {
+      "max_depth": 3,
+      "min_samples_leaf": 50
+     },
+     "cv_pr_auc": 0.2024357435944514
+    },
+    {
+     "params": {
+      "max_depth": 3,
+      "min_samples_leaf": 100
+     },
+     "cv_pr_auc": 0.2039658813852421
+    },
+    {
+     "params": {
+      "max_depth": 5,
+      "min_samples_leaf": 20
+     },
+     "cv_pr_auc": 0.20970038222475385
+    },
+    {
+     "params": {
+      "max_depth": 5,
+      "min_samples_leaf": 50
+     },
+     "cv_pr_auc": 0.2064866001015546
+    },
+    {
+     "params": {
+      "max_depth": 5,
+      "min_samples_leaf": 100
+     },
+     "cv_pr_auc": 0.21593678210568826
+    },
+    {
+     "params": {
+      "max_depth": 8,
+      "min_samples_leaf": 20
+     },
+     "cv_pr_auc": 0.19813260326806093
+    },
+    {
+     "params": {
+      "max_depth": 8,
+      "min_samples_leaf": 50
+     },
+     "cv_pr_auc": 0.2026576648596453
+    },
+    {
+     "params": {
+      "max_depth": 8,
+      "min_samples_leaf": 100
+     },
+     "cv_pr_auc": 0.21463698090293462
+    }
+   ],
+   "default_imbalance": "class weights",
+   "depth": 5,
+   "leaves": 20
+  },
+  "SVM (RBF)": {
+   "best_params": {
+    "C": 0.3,
+    "gamma": 0.01
+   },
+   "cv_pr_auc": 0.2531369165566621,
+   "fit_seconds": 276.5,
+   "grid": [
+    {
+     "params": {
+      "C": 0.3,
+      "gamma": "scale"
+     },
+     "cv_pr_auc": 0.25201950172716203
+    },
+    {
+     "params": {
+      "C": 0.3,
+      "gamma": 0.01
+     },
+     "cv_pr_auc": 0.2531369165566621
+    },
+    {
+     "params": {
+      "C": 1,
+      "gamma": "scale"
+     },
+     "cv_pr_auc": 0.24804506823089453
+    },
+    {
+     "params": {
+      "C": 1,
+      "gamma": 0.01
+     },
+     "cv_pr_auc": 0.24975842738143705
+    },
+    {
+     "params": {
+      "C": 3,
+      "gamma": "scale"
+     },
+     "cv_pr_auc": 0.2374887777580956
+    },
+    {
+     "params": {
+      "C": 3,
+      "gamma": 0.01
+     },
+     "cv_pr_auc": 0.24059885236303993
+    }
+   ],
+   "default_imbalance": "class weights",
+   "n_support_vectors": 9161,
+   "support_vector_share": 0.8451886705415629
+  }
+ },
+ "features": [
+  "h_n",
+  "h_active_days",
+  "h_span_days",
+  "h_txn_per_active_day",
+  "h_gap_max",
+  "h_days_since_last",
+  "h_inactive_week_share",
+  "h_credit_share",
+  "h_both_dir_day_share",
+  "h_credit_debit_size_gap",
+  "h_share_cash",
+  "h_share_card",
+  "h_share_wire",
+  "h_share_international",
+  "h_channel_entropy",
+  "h_cash_credit_share",
+  "h_size_mean",
+  "h_size_median",
+  "h_size_std",
+  "h_size_p95",
+  "h_size_max",
+  "h_large_share",
+  "h_hour_entropy",
+  "h_gap_cv",
+  "r_n",
+  "r_n7",
+  "r_credit_share",
+  "r_share_cash",
+  "r_share_international",
+  "r_size_mean",
+  "r_large_share",
+  "rate_ratio",
+  "size_shift",
+  "cash_shift",
+  "intl_shift",
+  "no_history",
+  "burst_resid",
+  "burst_z",
+  "p_credit_cash_n",
+  "p_credit_cash_mean",
+  "p_credit_cash_median",
+  "p_credit_cash_std",
+  "p_credit_cash_min",
+  "p_credit_cash_max",
+  "p_credit_card_n",
+  "p_credit_card_mean",
+  "p_credit_card_median",
+  "p_credit_card_std",
+  "p_credit_card_min",
+  "p_credit_card_max",
+  "p_credit_wire_n",
+  "p_credit_wire_mean",
+  "p_credit_wire_median",
+  "p_credit_wire_std",
+  "p_credit_wire_min",
+  "p_credit_wire_max",
+  "p_credit_international_n",
+  "p_credit_international_mean",
+  "p_credit_international_median",
+  "p_credit_international_std",
+  "p_credit_international_min",
+  "p_credit_international_max",
+  "p_debit_cash_n",
+  "p_debit_cash_mean",
+  "p_debit_cash_median",
+  "p_debit_cash_std",
+  "p_debit_cash_min",
+  "p_debit_cash_max",
+  "p_debit_card_n",
+  "p_debit_card_mean",
+  "p_debit_card_median",
+  "p_debit_card_std",
+  "p_debit_card_min",
+  "p_debit_card_max",
+  "p_debit_wire_n",
+  "p_debit_wire_mean",
+  "p_debit_wire_median",
+  "p_debit_wire_std",
+  "p_debit_wire_min",
+  "p_debit_wire_max",
+  "p_debit_international_n",
+  "p_debit_international_mean",
+  "p_debit_international_median",
+  "p_debit_international_std",
+  "p_debit_international_min",
+  "p_debit_international_max"
+ ],
+ "benchmark_n_features": 56
+}

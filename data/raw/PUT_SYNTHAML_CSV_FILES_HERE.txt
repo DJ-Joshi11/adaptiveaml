@@ -1,0 +1,7 @@
+Place the two SynthAML files in this folder, with exactly these names:
+
+    synthetic_alerts.csv
+    synthetic_transactions.csv
+
+Download: Springer Nature Figshare, collection 6504421
+https://springernature.figshare.com/collections/_/6504421

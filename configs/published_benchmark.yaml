@@ -1,0 +1,14 @@
+# ROC-AUC values published in Table 3 of the SynthAML paper
+# (Jensen et al., 2023, Scientific Data, https://www.nature.com/articles/s41597-023-02569-2).
+# Fill these in BY HAND from the paper and they will appear on the Benchmark page next to our
+# re-implementation. Left empty on purpose: we do not show a published number we have not
+# personally read off the source.
+source: "Jensen et al. (2023), Scientific Data 10, Table 3 - trained and tested on synthetic data"
+metric: roc_auc
+values:
+  Decision Tree: null
+  Random Forest: null
+  Logistic Regression: null
+  SVM: null
+  Multilayer Perceptron: null
+  LightGBM: null

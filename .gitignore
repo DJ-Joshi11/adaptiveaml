@@ -1,0 +1,15 @@
+# --- never pushed: raw and intermediate data (the raw CSVs are ~1 GB; GitHub's limit is 100 MB per file)
+data/raw/*.csv
+data/interim/
+data/sample/
+artifacts/models/
+data/processed/benchmark_features.parquet
+
+# --- pushed on purpose: the console reads only these, so the deployed app needs them
+#     artifacts/*.json, artifacts/*.parquet, data/processed/alert_features.parquet, data/processed/alert_daily.parquet
+
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store

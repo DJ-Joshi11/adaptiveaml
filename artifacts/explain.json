@@ -1,0 +1,1362 @@
+{
+ "coefs": [
+  {
+   "feature": "p_debit_wire_mean",
+   "label": "Wire debits: typical size (mean)",
+   "group": "Profile",
+   "coef": -0.2552782170595298,
+   "lo": -0.36808670882551814,
+   "hi": -0.15032498204702227,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_wire_max",
+   "label": "Wire debits: largest size",
+   "group": "Profile",
+   "coef": -0.23229775906185554,
+   "lo": -0.33665109059124065,
+   "hi": -0.14349238844630793,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_wire_median",
+   "label": "Wire debits: typical size (median)",
+   "group": "Profile",
+   "coef": -0.20077481849662954,
+   "lo": -0.3154413226209428,
+   "hi": -0.08668516848659018,
+   "stable": true
+  },
+  {
+   "feature": "p_credit_wire_mean",
+   "label": "Wire credits: typical size (mean)",
+   "group": "Profile",
+   "coef": -0.1957575693309014,
+   "lo": -0.2687618449472719,
+   "hi": -0.10008752078181012,
+   "stable": true
+  },
+  {
+   "feature": "p_credit_wire_std",
+   "label": "Wire credits: size variability",
+   "group": "Profile",
+   "coef": -0.18887074734798504,
+   "lo": -0.2940553277410925,
+   "hi": -0.08606166419055757,
+   "stable": true
+  },
+  {
+   "feature": "p_credit_cash_mean",
+   "label": "Cash credits: typical size (mean)",
+   "group": "Profile",
+   "coef": 0.1805853261929588,
+   "lo": 0.09110228492496195,
+   "hi": 0.29015056248443155,
+   "stable": true
+  },
+  {
+   "feature": "p_credit_cash_max",
+   "label": "Cash credits: largest size",
+   "group": "Profile",
+   "coef": 0.15597601226893804,
+   "lo": 0.062416616476037114,
+   "hi": 0.24518316806099608,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_card_mean",
+   "label": "Card debits: typical size (mean)",
+   "group": "Profile",
+   "coef": 0.149864050944756,
+   "lo": 0.03483211349922107,
+   "hi": 0.23384251404879305,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_card_max",
+   "label": "Card debits: largest size",
+   "group": "Profile",
+   "coef": 0.14122009798458618,
+   "lo": 0.05982485635115551,
+   "hi": 0.23383363913802863,
+   "stable": true
+  },
+  {
+   "feature": "h_credit_debit_size_gap",
+   "label": "Credit vs debit typical size gap",
+   "group": "Direction",
+   "coef": -0.13762183965822203,
+   "lo": -0.2190326384433197,
+   "hi": -0.054271258796260914,
+   "stable": true
+  },
+  {
+   "feature": "r_credit_share",
+   "label": "Recent share of credits",
+   "group": "Recent",
+   "coef": -0.12947392806215727,
+   "lo": -0.1901491949734692,
+   "hi": -0.06341456772822322,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_wire_std",
+   "label": "Wire debits: size variability",
+   "group": "Profile",
+   "coef": -0.12938173295039207,
+   "lo": -0.22292083723985787,
+   "hi": -0.005388511593560676,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_wire_n",
+   "label": "Wire debits: number",
+   "group": "Profile",
+   "coef": -0.11979214764836349,
+   "lo": -0.243610461562082,
+   "hi": 0.019607976445140243,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_card_mean",
+   "label": "Card credits: typical size (mean)",
+   "group": "Profile",
+   "coef": 0.11531147752176787,
+   "lo": 0.03632122111859501,
+   "hi": 0.2202905140512787,
+   "stable": true
+  },
+  {
+   "feature": "p_credit_cash_std",
+   "label": "Cash credits: size variability",
+   "group": "Profile",
+   "coef": 0.10318243775851603,
+   "lo": 0.011567035119120364,
+   "hi": 0.18221824446206292,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_card_std",
+   "label": "Card debits: size variability",
+   "group": "Profile",
+   "coef": 0.0943271600761154,
+   "lo": -0.02105719824522457,
+   "hi": 0.1835886944077538,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_international_min",
+   "label": "International debits: smallest size",
+   "group": "Profile",
+   "coef": 0.091592685612145,
+   "lo": -0.004247614779478708,
+   "hi": 0.19055701681439816,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_card_max",
+   "label": "Card credits: largest size",
+   "group": "Profile",
+   "coef": 0.08914459844851996,
+   "lo": 0.000466281849019615,
+   "hi": 0.18142245367137116,
+   "stable": true
+  },
+  {
+   "feature": "p_debit_international_max",
+   "label": "International debits: largest size",
+   "group": "Profile",
+   "coef": -0.0885946060197717,
+   "lo": -0.1843160691909921,
+   "hi": 0.006395877158431972,
+   "stable": false
+  },
+  {
+   "feature": "h_share_cash",
+   "label": "Cash share",
+   "group": "Channel",
+   "coef": -0.08842456345567648,
+   "lo": -0.18608805948436488,
+   "hi": -0.01893556512896636,
+   "stable": true
+  },
+  {
+   "feature": "p_credit_international_min",
+   "label": "International credits: smallest size",
+   "group": "Profile",
+   "coef": -0.0855650665701685,
+   "lo": -0.174498640988908,
+   "hi": 0.017423710679143434,
+   "stable": false
+  },
+  {
+   "feature": "r_large_share",
+   "label": "Recent share of large transactions",
+   "group": "Recent",
+   "coef": 0.07945144562792752,
+   "lo": -0.005424849065806514,
+   "hi": 0.1655710570445211,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_cash_mean",
+   "label": "Cash debits: typical size (mean)",
+   "group": "Profile",
+   "coef": 0.07428005993145637,
+   "lo": -0.014983367981203402,
+   "hi": 0.17402177518874853,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_international_median",
+   "label": "International debits: typical size (median)",
+   "group": "Profile",
+   "coef": -0.07404818503314475,
+   "lo": -0.17337530969677842,
+   "hi": 0.02965409563927069,
+   "stable": false
+  },
+  {
+   "feature": "burst_resid",
+   "label": "Activity above expected",
+   "group": "Burst",
+   "coef": 0.07382599700167118,
+   "lo": -0.027149701667366924,
+   "hi": 0.17334209270566123,
+   "stable": false
+  },
+  {
+   "feature": "h_both_dir_day_share",
+   "label": "Days with both credit and debit",
+   "group": "Direction",
+   "coef": 0.07260331834158432,
+   "lo": -0.04471362512577121,
+   "hi": 0.1568137569378869,
+   "stable": false
+  },
+  {
+   "feature": "h_size_max",
+   "label": "Largest size",
+   "group": "Size",
+   "coef": 0.0711036992242984,
+   "lo": -0.018306477486925724,
+   "hi": 0.1637494284808904,
+   "stable": false
+  },
+  {
+   "feature": "size_shift",
+   "label": "Shift in typical size",
+   "group": "Change",
+   "coef": -0.068059391692059,
+   "lo": -0.1385801560223185,
+   "hi": 0.023629758346990347,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_card_std",
+   "label": "Card credits: size variability",
+   "group": "Profile",
+   "coef": 0.06382707434665694,
+   "lo": -0.052077190841740936,
+   "hi": 0.17262727309664228,
+   "stable": false
+  },
+  {
+   "feature": "r_n7",
+   "label": "Transactions in last 7 days",
+   "group": "Recent",
+   "coef": -0.06328788698401396,
+   "lo": -0.16616290131381975,
+   "hi": 0.06028688879800262,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_cash_median",
+   "label": "Cash credits: typical size (median)",
+   "group": "Profile",
+   "coef": 0.05827523968335099,
+   "lo": -0.03063408684867939,
+   "hi": 0.18678702026828956,
+   "stable": false
+  },
+  {
+   "feature": "h_size_std",
+   "label": "Size variability",
+   "group": "Size",
+   "coef": -0.0556824052151727,
+   "lo": -0.17987916892131672,
+   "hi": 0.058882858059800966,
+   "stable": false
+  },
+  {
+   "feature": "h_channel_entropy",
+   "label": "Channel diversity",
+   "group": "Channel",
+   "coef": -0.052719814495813866,
+   "lo": -0.14226285791082474,
+   "hi": 0.018461120696591907,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_international_max",
+   "label": "International credits: largest size",
+   "group": "Profile",
+   "coef": -0.0524417764501955,
+   "lo": -0.14026284486502255,
+   "hi": 0.032536562377269394,
+   "stable": false
+  },
+  {
+   "feature": "r_share_international",
+   "label": "Recent international share",
+   "group": "Recent",
+   "coef": -0.04966293953173053,
+   "lo": -0.08483073941410423,
+   "hi": 0.013530998628735616,
+   "stable": false
+  },
+  {
+   "feature": "h_gap_cv",
+   "label": "Irregularity of gaps",
+   "group": "Timing",
+   "coef": 0.04931677602440317,
+   "lo": -0.03219933837407265,
+   "hi": 0.13807172153787453,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_cash_max",
+   "label": "Cash debits: largest size",
+   "group": "Profile",
+   "coef": -0.047068907090858404,
+   "lo": -0.14085549378625106,
+   "hi": 0.057589725130447834,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_wire_median",
+   "label": "Wire credits: typical size (median)",
+   "group": "Profile",
+   "coef": -0.0465134202317658,
+   "lo": -0.1327283743714794,
+   "hi": 0.04411163109770031,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_international_n",
+   "label": "International debits: number",
+   "group": "Profile",
+   "coef": 0.04648268793859811,
+   "lo": -0.02333894607491042,
+   "hi": 0.10674053397940961,
+   "stable": false
+  },
+  {
+   "feature": "h_size_median",
+   "label": "Typical size (median)",
+   "group": "Size",
+   "coef": 0.04439108043997985,
+   "lo": -0.059218316505759115,
+   "hi": 0.12727766699337326,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_cash_min",
+   "label": "Cash debits: smallest size",
+   "group": "Profile",
+   "coef": -0.044062825814091745,
+   "lo": -0.14235197192249374,
+   "hi": 0.04673530026054326,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_wire_min",
+   "label": "Wire debits: smallest size",
+   "group": "Profile",
+   "coef": -0.04016340097002581,
+   "lo": -0.12451361409865254,
+   "hi": 0.0381596602516697,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_wire_max",
+   "label": "Wire credits: largest size",
+   "group": "Profile",
+   "coef": -0.038001061758434526,
+   "lo": -0.15495581734703223,
+   "hi": 0.06765842319869986,
+   "stable": false
+  },
+  {
+   "feature": "cash_shift",
+   "label": "Shift in cash share",
+   "group": "Change",
+   "coef": 0.03767106962845511,
+   "lo": -0.0007194875256068332,
+   "hi": 0.08486516642990337,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_wire_min",
+   "label": "Wire credits: smallest size",
+   "group": "Profile",
+   "coef": -0.03766972175031504,
+   "lo": -0.12200168610961004,
+   "hi": 0.04207763613282433,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_international_std",
+   "label": "International credits: size variability",
+   "group": "Profile",
+   "coef": -0.036313363531201966,
+   "lo": -0.12048566972201402,
+   "hi": 0.03313897238040702,
+   "stable": false
+  },
+  {
+   "feature": "r_size_mean",
+   "label": "Recent typical size",
+   "group": "Recent",
+   "coef": 0.03598202857976259,
+   "lo": -0.07651222175327727,
+   "hi": 0.13955288132242907,
+   "stable": false
+  },
+  {
+   "feature": "h_days_since_last",
+   "label": "Quiet days before the recent window",
+   "group": "Dormancy",
+   "coef": 0.03566182217660174,
+   "lo": -0.027502168526872935,
+   "hi": 0.10660578345715271,
+   "stable": false
+  },
+  {
+   "feature": "h_inactive_week_share",
+   "label": "Share of weeks with no activity",
+   "group": "Dormancy",
+   "coef": 0.03479049957601776,
+   "lo": -0.07340324722733119,
+   "hi": 0.15539451102873117,
+   "stable": false
+  },
+  {
+   "feature": "h_size_p95",
+   "label": "Large-end size (95th pct)",
+   "group": "Size",
+   "coef": -0.03446552718683504,
+   "lo": -0.14647970221004275,
+   "hi": 0.06051236150207566,
+   "stable": false
+  },
+  {
+   "feature": "h_share_international",
+   "label": "International share",
+   "group": "Channel",
+   "coef": 0.034201109177383546,
+   "lo": -0.07046060730140703,
+   "hi": 0.1258866935528317,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_card_n",
+   "label": "Card credits: number",
+   "group": "Profile",
+   "coef": -0.034005752283029024,
+   "lo": -0.1343478222030635,
+   "hi": 0.055884243597504706,
+   "stable": false
+  },
+  {
+   "feature": "burst_z",
+   "label": "Activity above expected (confidence-adjusted)",
+   "group": "Burst",
+   "coef": -0.032553809634331146,
+   "lo": -0.12226300066893069,
+   "hi": 0.06775164579037173,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_cash_min",
+   "label": "Cash credits: smallest size",
+   "group": "Profile",
+   "coef": 0.03084794617070669,
+   "lo": -0.05344130144757506,
+   "hi": 0.1269359338042707,
+   "stable": false
+  },
+  {
+   "feature": "intl_shift",
+   "label": "Shift in international share",
+   "group": "Change",
+   "coef": 0.029929073120312358,
+   "lo": -0.03777214160448407,
+   "hi": 0.08302128642987872,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_international_median",
+   "label": "International credits: typical size (median)",
+   "group": "Profile",
+   "coef": 0.029236081121586932,
+   "lo": -0.07961688633001428,
+   "hi": 0.11720779461558253,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_international_std",
+   "label": "International debits: size variability",
+   "group": "Profile",
+   "coef": 0.028642175526604866,
+   "lo": -0.031744079729520536,
+   "hi": 0.09920534992328671,
+   "stable": false
+  },
+  {
+   "feature": "h_share_wire",
+   "label": "Wire share",
+   "group": "Channel",
+   "coef": 0.028515332881390385,
+   "lo": -0.028436453372667383,
+   "hi": 0.07685059932364252,
+   "stable": false
+  },
+  {
+   "feature": "h_active_days",
+   "label": "Active days in history",
+   "group": "Volume",
+   "coef": 0.028160603303726238,
+   "lo": -0.03450317133912791,
+   "hi": 0.09907502358149921,
+   "stable": false
+  },
+  {
+   "feature": "r_share_cash",
+   "label": "Recent cash share",
+   "group": "Recent",
+   "coef": -0.024328948025947067,
+   "lo": -0.06390085517576355,
+   "hi": 0.010750453987592692,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_card_min",
+   "label": "Card debits: smallest size",
+   "group": "Profile",
+   "coef": -0.023151681580035742,
+   "lo": -0.10779403595313829,
+   "hi": 0.06811199478637388,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_cash_n",
+   "label": "Cash credits: number",
+   "group": "Profile",
+   "coef": 0.022160020624539988,
+   "lo": -0.06927964879961424,
+   "hi": 0.1387443193852029,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_cash_n",
+   "label": "Cash debits: number",
+   "group": "Profile",
+   "coef": 0.02192679626401736,
+   "lo": -0.07586390735352612,
+   "hi": 0.13636240093823482,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_cash_std",
+   "label": "Cash debits: size variability",
+   "group": "Profile",
+   "coef": 0.020826976457133085,
+   "lo": -0.07374274642545275,
+   "hi": 0.09486771946571727,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_card_n",
+   "label": "Card debits: number",
+   "group": "Profile",
+   "coef": 0.020711425925959193,
+   "lo": -0.11453549438614789,
+   "hi": 0.12969553162196887,
+   "stable": false
+  },
+  {
+   "feature": "h_n",
+   "label": "Transactions in history",
+   "group": "Volume",
+   "coef": 0.019620518432502437,
+   "lo": -0.018099319180373923,
+   "hi": 0.06209935872871841,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_cash_median",
+   "label": "Cash debits: typical size (median)",
+   "group": "Profile",
+   "coef": -0.019422406851277215,
+   "lo": -0.10572891801065307,
+   "hi": 0.0740184113291835,
+   "stable": false
+  },
+  {
+   "feature": "no_history",
+   "label": "No history before last 30 days",
+   "group": "Change",
+   "coef": 0.019143589593462094,
+   "lo": -0.06000248131325815,
+   "hi": 0.08842608604428194,
+   "stable": false
+  },
+  {
+   "feature": "h_gap_max",
+   "label": "Longest quiet period (days)",
+   "group": "Dormancy",
+   "coef": -0.017840599296964146,
+   "lo": -0.11386771402770544,
+   "hi": 0.07036847218907956,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_card_median",
+   "label": "Card credits: typical size (median)",
+   "group": "Profile",
+   "coef": 0.01691030429001195,
+   "lo": -0.08138877739624505,
+   "hi": 0.10531938545068041,
+   "stable": false
+  },
+  {
+   "feature": "h_credit_share",
+   "label": "Share of credits",
+   "group": "Direction",
+   "coef": 0.014863055767022924,
+   "lo": -0.0728530453960975,
+   "hi": 0.1008303693387416,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_wire_n",
+   "label": "Wire credits: number",
+   "group": "Profile",
+   "coef": 0.013344229439714484,
+   "lo": -0.0882928438540854,
+   "hi": 0.09260144970398894,
+   "stable": false
+  },
+  {
+   "feature": "h_span_days",
+   "label": "Length of history (days)",
+   "group": "Volume",
+   "coef": -0.011316159992802097,
+   "lo": -0.10426340470322877,
+   "hi": 0.08197538223668414,
+   "stable": false
+  },
+  {
+   "feature": "h_large_share",
+   "label": "Share of large transactions",
+   "group": "Size",
+   "coef": 0.009074794787022894,
+   "lo": -0.12486557561079505,
+   "hi": 0.09877855185069954,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_card_min",
+   "label": "Card credits: smallest size",
+   "group": "Profile",
+   "coef": 0.008725112331894101,
+   "lo": -0.07149348683915432,
+   "hi": 0.1035527682378367,
+   "stable": false
+  },
+  {
+   "feature": "h_size_mean",
+   "label": "Typical size (mean)",
+   "group": "Size",
+   "coef": -0.008290712167329302,
+   "lo": -0.08966226098611335,
+   "hi": 0.06644574515763658,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_international_mean",
+   "label": "International credits: typical size (mean)",
+   "group": "Profile",
+   "coef": 0.005569123895928944,
+   "lo": -0.05314956286231986,
+   "hi": 0.05916836586093234,
+   "stable": false
+  },
+  {
+   "feature": "h_share_card",
+   "label": "Card share",
+   "group": "Channel",
+   "coef": -0.004174192688423028,
+   "lo": -0.043777243450179894,
+   "hi": 0.03894438733933769,
+   "stable": false
+  },
+  {
+   "feature": "rate_ratio",
+   "label": "Activity rate vs history",
+   "group": "Change",
+   "coef": -0.0035843081928600457,
+   "lo": -0.1169951809657274,
+   "hi": 0.09310161177253931,
+   "stable": false
+  },
+  {
+   "feature": "p_credit_international_n",
+   "label": "International credits: number",
+   "group": "Profile",
+   "coef": -0.002829523891482592,
+   "lo": -0.09225365992501836,
+   "hi": 0.09479485404909341,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_international_mean",
+   "label": "International debits: typical size (mean)",
+   "group": "Profile",
+   "coef": 0.0027485938331209578,
+   "lo": -0.021359176275280202,
+   "hi": 0.026646710886115865,
+   "stable": false
+  },
+  {
+   "feature": "r_n",
+   "label": "Transactions in last 30 days",
+   "group": "Recent",
+   "coef": 0.002508045014449973,
+   "lo": -0.043089484794058046,
+   "hi": 0.07522535153782128,
+   "stable": false
+  },
+  {
+   "feature": "h_cash_credit_share",
+   "label": "Cash share among credits",
+   "group": "Channel",
+   "coef": 0.002140364458643433,
+   "lo": -0.08543520942958392,
+   "hi": 0.08680707915636587,
+   "stable": false
+  },
+  {
+   "feature": "h_hour_entropy",
+   "label": "Time-of-day spread",
+   "group": "Timing",
+   "coef": 0.0020180924111772975,
+   "lo": -0.0596736707573041,
+   "hi": 0.06449680320132178,
+   "stable": false
+  },
+  {
+   "feature": "p_debit_card_median",
+   "label": "Card debits: typical size (median)",
+   "group": "Profile",
+   "coef": -0.0004081676751967714,
+   "lo": -0.08492419852450488,
+   "hi": 0.10575547510401205,
+   "stable": false
+  },
+  {
+   "feature": "h_txn_per_active_day",
+   "label": "Transactions per active day",
+   "group": "Volume",
+   "coef": -0.00012624187501935382,
+   "lo": -0.09941130097351003,
+   "hi": 0.09798491863456518,
+   "stable": false
+  }
+ ],
+ "permutation": [
+  {
+   "feature": "p_debit_wire_mean",
+   "label": "Wire debits: typical size (mean)",
+   "importance": 0.02128784886480962,
+   "sd": 0.0017947205725067751
+  },
+  {
+   "feature": "p_debit_wire_median",
+   "label": "Wire debits: typical size (median)",
+   "importance": 0.016493322731332288,
+   "sd": 0.0015639159533211932
+  },
+  {
+   "feature": "p_debit_wire_max",
+   "label": "Wire debits: largest size",
+   "importance": 0.014009694878127957,
+   "sd": 0.004743451989124297
+  },
+  {
+   "feature": "p_credit_wire_mean",
+   "label": "Wire credits: typical size (mean)",
+   "importance": 0.0075913269821904035,
+   "sd": 0.0034825377834870118
+  },
+  {
+   "feature": "p_debit_international_median",
+   "label": "International debits: typical size (median)",
+   "importance": 0.007139613470898716,
+   "sd": 0.002211221715177112
+  },
+  {
+   "feature": "p_credit_wire_std",
+   "label": "Wire credits: size variability",
+   "importance": 0.007039817266383762,
+   "sd": 0.005611212226246085
+  },
+  {
+   "feature": "p_debit_wire_min",
+   "label": "Wire debits: smallest size",
+   "importance": 0.006827344708582002,
+   "sd": 0.002599247812258966
+  },
+  {
+   "feature": "h_size_std",
+   "label": "Size variability",
+   "importance": 0.005710551082812894,
+   "sd": 0.004279276231591069
+  },
+  {
+   "feature": "p_credit_wire_median",
+   "label": "Wire credits: typical size (median)",
+   "importance": 0.005433309531419628,
+   "sd": 0.0028092303175445356
+  },
+  {
+   "feature": "h_large_share",
+   "label": "Share of large transactions",
+   "importance": 0.005358533201047806,
+   "sd": 0.003883826656488724
+  },
+  {
+   "feature": "h_size_p95",
+   "label": "Large-end size (95th pct)",
+   "importance": 0.005266821313702578,
+   "sd": 0.0037193894953329956
+  },
+  {
+   "feature": "p_credit_international_min",
+   "label": "International credits: smallest size",
+   "importance": 0.0038873842331199246,
+   "sd": 0.0018132561815191975
+  },
+  {
+   "feature": "p_debit_wire_std",
+   "label": "Wire debits: size variability",
+   "importance": 0.003880025486060923,
+   "sd": 0.000510797020624237
+  },
+  {
+   "feature": "p_debit_card_std",
+   "label": "Card debits: size variability",
+   "importance": 0.003787858139060629,
+   "sd": 0.0105444686644372
+  },
+  {
+   "feature": "p_credit_wire_min",
+   "label": "Wire credits: smallest size",
+   "importance": 0.0037661018312070507,
+   "sd": 0.00366463111186258
+  },
+  {
+   "feature": "p_debit_international_mean",
+   "label": "International debits: typical size (mean)",
+   "importance": 0.003282175878427218,
+   "sd": 0.001196529615303538
+  },
+  {
+   "feature": "p_debit_international_max",
+   "label": "International debits: largest size",
+   "importance": 0.003026875311888814,
+   "sd": 0.00043306299462701607
+  },
+  {
+   "feature": "p_credit_international_max",
+   "label": "International credits: largest size",
+   "importance": 0.002990283674814187,
+   "sd": 0.0022824381684248625
+  },
+  {
+   "feature": "r_size_mean",
+   "label": "Recent typical size",
+   "importance": 0.0024854186075040454,
+   "sd": 0.00047033235553643667
+  },
+  {
+   "feature": "p_debit_cash_median",
+   "label": "Cash debits: typical size (median)",
+   "importance": 0.002409572520071235,
+   "sd": 0.0024986759861868736
+  },
+  {
+   "feature": "h_days_since_last",
+   "label": "Quiet days before the recent window",
+   "importance": 0.0023973170470839946,
+   "sd": 0.002752682120981938
+  },
+  {
+   "feature": "h_share_card",
+   "label": "Card share",
+   "importance": 0.002092112945657143,
+   "sd": 0.003000236090238324
+  },
+  {
+   "feature": "p_debit_wire_n",
+   "label": "Wire debits: number",
+   "importance": 0.002008423748814344,
+   "sd": 0.00145037089349644
+  },
+  {
+   "feature": "h_credit_share",
+   "label": "Share of credits",
+   "importance": 0.0019127290744469876,
+   "sd": 0.0019155734793379793
+  },
+  {
+   "feature": "h_size_mean",
+   "label": "Typical size (mean)",
+   "importance": 0.0016583727646850381,
+   "sd": 0.0018180394849678688
+  },
+  {
+   "feature": "p_credit_cash_std",
+   "label": "Cash credits: size variability",
+   "importance": 0.0015688288054523936,
+   "sd": 0.0051862704227136755
+  },
+  {
+   "feature": "p_debit_international_min",
+   "label": "International debits: smallest size",
+   "importance": 0.0015531877236879914,
+   "sd": 0.0013477272918652973
+  },
+  {
+   "feature": "no_history",
+   "label": "No history before last 30 days",
+   "importance": 0.001450271241334807,
+   "sd": 0.0027684327666949106
+  },
+  {
+   "feature": "p_credit_cash_max",
+   "label": "Cash credits: largest size",
+   "importance": 0.0012674951021276286,
+   "sd": 0.0031423235142546387
+  },
+  {
+   "feature": "h_share_wire",
+   "label": "Wire share",
+   "importance": 0.0012498994019332816,
+   "sd": 0.003046760428035626
+  },
+  {
+   "feature": "p_debit_cash_std",
+   "label": "Cash debits: size variability",
+   "importance": 0.0012454910928262526,
+   "sd": 0.0011848236296171939
+  },
+  {
+   "feature": "h_gap_cv",
+   "label": "Irregularity of gaps",
+   "importance": 0.0012010423239546264,
+   "sd": 0.00227726752447244
+  },
+  {
+   "feature": "r_large_share",
+   "label": "Recent share of large transactions",
+   "importance": 0.0011959764052785389,
+   "sd": 0.0012767679237264387
+  },
+  {
+   "feature": "p_credit_card_n",
+   "label": "Card credits: number",
+   "importance": 0.0011876991608535021,
+   "sd": 0.001396330133672448
+  },
+  {
+   "feature": "p_debit_card_min",
+   "label": "Card debits: smallest size",
+   "importance": 0.0011756826693915718,
+   "sd": 0.002942086932310439
+  },
+  {
+   "feature": "p_credit_wire_max",
+   "label": "Wire credits: largest size",
+   "importance": 0.0011351098708009544,
+   "sd": 0.0009411672700543158
+  },
+  {
+   "feature": "p_credit_cash_min",
+   "label": "Cash credits: smallest size",
+   "importance": 0.0011316602524100161,
+   "sd": 0.0006927818447543357
+  },
+  {
+   "feature": "p_credit_international_mean",
+   "label": "International credits: typical size (mean)",
+   "importance": 0.0010601407492725201,
+   "sd": 0.0016916245988363276
+  },
+  {
+   "feature": "p_credit_cash_mean",
+   "label": "Cash credits: typical size (mean)",
+   "importance": 0.0009905403376638071,
+   "sd": 0.011148270499179585
+  },
+  {
+   "feature": "h_hour_entropy",
+   "label": "Time-of-day spread",
+   "importance": 0.000917470952430203,
+   "sd": 0.00078297586115577
+  },
+  {
+   "feature": "h_size_median",
+   "label": "Typical size (median)",
+   "importance": 0.0007852524095351606,
+   "sd": 0.0012719235345322606
+  },
+  {
+   "feature": "h_txn_per_active_day",
+   "label": "Transactions per active day",
+   "importance": 0.0007537417478118055,
+   "sd": 0.0012810251967053704
+  },
+  {
+   "feature": "p_credit_international_median",
+   "label": "International credits: typical size (median)",
+   "importance": 0.0007371938149919691,
+   "sd": 0.002097149033349026
+  },
+  {
+   "feature": "h_active_days",
+   "label": "Active days in history",
+   "importance": 0.0006184676831949195,
+   "sd": 0.002889677381820424
+  },
+  {
+   "feature": "h_share_international",
+   "label": "International share",
+   "importance": 0.0005505726482898746,
+   "sd": 0.0021952198933120706
+  },
+  {
+   "feature": "p_debit_cash_max",
+   "label": "Cash debits: largest size",
+   "importance": 0.0004243297538957617,
+   "sd": 0.0008546682028032304
+  },
+  {
+   "feature": "p_credit_wire_n",
+   "label": "Wire credits: number",
+   "importance": 0.00042265576702976704,
+   "sd": 0.0021195158587292307
+  },
+  {
+   "feature": "r_n",
+   "label": "Transactions in last 30 days",
+   "importance": 0.00042120694061389036,
+   "sd": 0.0007631860019638808
+  },
+  {
+   "feature": "p_credit_international_std",
+   "label": "International credits: size variability",
+   "importance": 0.00040878327529449604,
+   "sd": 0.004147872177930904
+  },
+  {
+   "feature": "h_inactive_week_share",
+   "label": "Share of weeks with no activity",
+   "importance": 0.00035706482202890744,
+   "sd": 0.0011036059982705996
+  },
+  {
+   "feature": "h_n",
+   "label": "Transactions in history",
+   "importance": 0.00035407631606780104,
+   "sd": 0.0027189518381472884
+  },
+  {
+   "feature": "h_gap_max",
+   "label": "Longest quiet period (days)",
+   "importance": 0.00023800294357206875,
+   "sd": 0.00010866214271653859
+  },
+  {
+   "feature": "size_shift",
+   "label": "Shift in typical size",
+   "importance": 0.00017153737281339065,
+   "sd": 0.0012493937108627587
+  },
+  {
+   "feature": "burst_resid",
+   "label": "Activity above expected",
+   "importance": 0.00016758939915737883,
+   "sd": 0.0026975332466896377
+  },
+  {
+   "feature": "h_cash_credit_share",
+   "label": "Cash share among credits",
+   "importance": 0.0001443811823868731,
+   "sd": 0.0017480980691695288
+  },
+  {
+   "feature": "burst_z",
+   "label": "Activity above expected (confidence-adjusted)",
+   "importance": 2.5065862706508124e-05,
+   "sd": 0.0012853407010065465
+  },
+  {
+   "feature": "r_share_cash",
+   "label": "Recent cash share",
+   "importance": -2.372310474476243e-05,
+   "sd": 0.001533074432220627
+  },
+  {
+   "feature": "p_credit_card_std",
+   "label": "Card credits: size variability",
+   "importance": -0.00012805879043796078,
+   "sd": 0.003169686006982701
+  },
+  {
+   "feature": "h_share_cash",
+   "label": "Cash share",
+   "importance": -0.00016227805625636713,
+   "sd": 0.003927641954266472
+  },
+  {
+   "feature": "r_n7",
+   "label": "Transactions in last 7 days",
+   "importance": -0.0001814809933974315,
+   "sd": 0.00042165145435666144
+  },
+  {
+   "feature": "h_credit_debit_size_gap",
+   "label": "Credit vs debit typical size gap",
+   "importance": -0.00033577323801673814,
+   "sd": 0.0023288473606139304
+  },
+  {
+   "feature": "h_channel_entropy",
+   "label": "Channel diversity",
+   "importance": -0.00041706564108652994,
+   "sd": 0.00023401725470396302
+  },
+  {
+   "feature": "h_size_max",
+   "label": "Largest size",
+   "importance": -0.0004516974252273635,
+   "sd": 0.0023561634470675662
+  },
+  {
+   "feature": "rate_ratio",
+   "label": "Activity rate vs history",
+   "importance": -0.0004772867592998294,
+   "sd": 0.0015827826094430748
+  },
+  {
+   "feature": "p_credit_card_median",
+   "label": "Card credits: typical size (median)",
+   "importance": -0.0004888991924982081,
+   "sd": 0.00035118108739047897
+  },
+  {
+   "feature": "p_credit_international_n",
+   "label": "International credits: number",
+   "importance": -0.0005956883544780781,
+   "sd": 0.002807494700858155
+  },
+  {
+   "feature": "p_debit_cash_n",
+   "label": "Cash debits: number",
+   "importance": -0.0006341539808759252,
+   "sd": 0.002115593247896048
+  },
+  {
+   "feature": "r_share_international",
+   "label": "Recent international share",
+   "importance": -0.0006834395111316449,
+   "sd": 0.0007327014976076798
+  },
+  {
+   "feature": "p_debit_cash_min",
+   "label": "Cash debits: smallest size",
+   "importance": -0.0007724364039156106,
+   "sd": 0.0011874633938572707
+  },
+  {
+   "feature": "h_both_dir_day_share",
+   "label": "Days with both credit and debit",
+   "importance": -0.000785751149203151,
+   "sd": 0.00201497877382624
+  },
+  {
+   "feature": "p_debit_international_n",
+   "label": "International debits: number",
+   "importance": -0.0008995227234457892,
+   "sd": 0.0019364566673162607
+  },
+  {
+   "feature": "intl_shift",
+   "label": "Shift in international share",
+   "importance": -0.0009029619265478553,
+   "sd": 0.0005417412438904898
+  },
+  {
+   "feature": "cash_shift",
+   "label": "Shift in cash share",
+   "importance": -0.0009725115299228371,
+   "sd": 0.001845951999077979
+  },
+  {
+   "feature": "p_debit_cash_mean",
+   "label": "Cash debits: typical size (mean)",
+   "importance": -0.0010495756693058578,
+   "sd": 0.001700990590584937
+  },
+  {
+   "feature": "p_debit_card_n",
+   "label": "Card debits: number",
+   "importance": -0.0011505311683545256,
+   "sd": 0.001117471787176657
+  },
+  {
+   "feature": "p_credit_card_mean",
+   "label": "Card credits: typical size (mean)",
+   "importance": -0.0012544673025565352,
+   "sd": 0.0009635373862737582
+  },
+  {
+   "feature": "p_credit_card_min",
+   "label": "Card credits: smallest size",
+   "importance": -0.001414588767966814,
+   "sd": 0.0019462773641038362
+  },
+  {
+   "feature": "p_debit_card_max",
+   "label": "Card debits: largest size",
+   "importance": -0.0014215472976173982,
+   "sd": 0.004503866862100857
+  },
+  {
+   "feature": "p_credit_card_max",
+   "label": "Card credits: largest size",
+   "importance": -0.0018002362929828524,
+   "sd": 0.0008557098228078537
+  },
+  {
+   "feature": "p_credit_cash_n",
+   "label": "Cash credits: number",
+   "importance": -0.0018506701241628825,
+   "sd": 0.001535151990830561
+  },
+  {
+   "feature": "p_credit_cash_median",
+   "label": "Cash credits: typical size (median)",
+   "importance": -0.0020304754923255084,
+   "sd": 0.007691170847664337
+  },
+  {
+   "feature": "h_span_days",
+   "label": "Length of history (days)",
+   "importance": -0.002278618882568676,
+   "sd": 0.001723111521065932
+  },
+  {
+   "feature": "p_debit_international_std",
+   "label": "International debits: size variability",
+   "importance": -0.0024481723245235454,
+   "sd": 0.0016504071637776694
+  },
+  {
+   "feature": "p_debit_card_mean",
+   "label": "Card debits: typical size (mean)",
+   "importance": -0.002955196893560034,
+   "sd": 0.0074005520354251675
+  },
+  {
+   "feature": "p_debit_card_median",
+   "label": "Card debits: typical size (median)",
+   "importance": -0.0041031249065151916,
+   "sd": 0.0035860452999000366
+  },
+  {
+   "feature": "r_credit_share",
+   "label": "Recent share of credits",
+   "importance": -0.006244410853863143,
+   "sd": 0.0038614318491548227
+  }
+ ],
+ "permutation_model": "SVM (RBF)",
+ "tree_importance": [
+  {
+   "feature": "p_debit_card_min",
+   "label": "Card debits: smallest size",
+   "importance": 0.22703409199800195
+  },
+  {
+   "feature": "p_debit_wire_std",
+   "label": "Wire debits: size variability",
+   "importance": 0.1954444884765043
+  },
+  {
+   "feature": "p_credit_card_min",
+   "label": "Card credits: smallest size",
+   "importance": 0.09119630429388839
+  },
+  {
+   "feature": "p_debit_wire_median",
+   "label": "Wire debits: typical size (median)",
+   "importance": 0.07508351116559261
+  },
+  {
+   "feature": "p_debit_wire_min",
+   "label": "Wire debits: smallest size",
+   "importance": 0.06607396384105552
+  },
+  {
+   "feature": "p_debit_card_mean",
+   "label": "Card debits: typical size (mean)",
+   "importance": 0.05692734101838088
+  },
+  {
+   "feature": "p_debit_wire_mean",
+   "label": "Wire debits: typical size (mean)",
+   "importance": 0.055735581529315015
+  },
+  {
+   "feature": "p_credit_cash_max",
+   "label": "Cash credits: largest size",
+   "importance": 0.043421490937229
+  },
+  {
+   "feature": "p_debit_wire_max",
+   "label": "Wire debits: largest size",
+   "importance": 0.03584798439235885
+  },
+  {
+   "feature": "p_debit_card_std",
+   "label": "Card debits: size variability",
+   "importance": 0.03206056006830038
+  },
+  {
+   "feature": "p_credit_international_max",
+   "label": "International credits: largest size",
+   "importance": 0.031095607893244153
+  },
+  {
+   "feature": "p_credit_cash_mean",
+   "label": "Cash credits: typical size (mean)",
+   "importance": 0.02417615678936701
+  }
+ ],
+ "tree_rules": "|--- Card debits: smallest size <= -1.04\n|   |--- Wire credits: typical size (median) <= -0.90\n|   |   |--- Credit vs debit typical size gap <= 0.20\n|   |   |   |--- class: 1\n|   |   |--- Credit vs debit typical size gap >  0.20\n|   |   |   |--- class: 1\n|   |--- Wire credits: typical size (median) >  -0.90\n|   |   |--- International credits: largest size <= -0.26\n|   |   |   |--- class: 1\n|   |   |--- International credits: largest size >  -0.26\n|   |   |   |--- International credits: largest size <= 1.06\n|   |   |   |   |--- truncated branch of depth 2\n|   |   |   |--- International credits: largest size >  1.06\n|   |   |   |   |--- class: 0\n|--- Card debits: smallest size >  -1.04\n|   |--- Wire debits: size variability <= -0.47\n|   |   |--- Wire debits: smallest size <= 0.84\n|   |   |   |--- Card debits: size variability <= -0.89\n|   |   |   |   |--- truncated branch of depth 2\n|   |   |   |--- Card debits: size variability >  -0.89\n|   |   |   |   |--- truncated branch of depth 2\n|   |   |--- Wire debits: smallest size >  0.84\n|   |   |   |--- Wire debits: largest size <= -0.92\n|   |   |   |   |--- truncated branch of depth 2\n|   |   |   |--- Wire debits: largest size >  -0.92\n|   |   |   |   |--- truncated branch of depth 2\n|   |--- Wire debits: size variability >  -0.47\n|   |   |--- Card credits: smallest size <= -0.90\n|   |   |   |--- Activity rate vs history <= -0.15\n|   |   |   |   |--- class: 1\n|   |   |   |--- Activity rate vs history >  -0.15\n|   |   |   |   |--- class: 1\n|   |   |--- Card credits: smallest size >  -0.90\n|   |   |   |--- Card debits: typical size (mean) <= 0.71\n|   |   |   |   |--- truncated branch of depth 2\n|   |   |   |--- Card debits: typical size (mean) >  0.71\n|   |   |   |   |--- truncated branch of depth 2\n",
+ "intercept": -0.1249660709144734,
+ "rank_agreement_with_champion": 0.8922002096684032
+}

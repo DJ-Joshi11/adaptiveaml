@@ -1,0 +1,117 @@
+{
+ "data_source": "synthaml",
+ "n_alerts": 20000,
+ "n_transactions": 16232955,
+ "report_rate": 0.17175,
+ "timestamp_mode": "datetime",
+ "nulls_alerts": {
+  "alert_id": 0,
+  "date": 0,
+  "y": 0
+ },
+ "nulls_transactions": {
+  "alert_id": 0,
+  "days_before": 0,
+  "hour": 0,
+  "is_credit": 0,
+  "type": 0,
+  "size": 0
+ },
+ "duplicate_alert_ids": 0,
+ "alerts_without_transactions": 0,
+ "transactions_without_alert": 0,
+ "entry_values": [
+  {
+   "is_credit": false,
+   "len": 3923886
+  },
+  {
+   "is_credit": true,
+   "len": 12309069
+  }
+ ],
+ "type_values": [
+  {
+   "type": "card",
+   "len": 8235071
+  },
+  {
+   "type": "wire",
+   "len": 6821413
+  },
+  {
+   "type": "cash",
+   "len": 1101918
+  },
+  {
+   "type": "international",
+   "len": 74553
+  }
+ ],
+ "txn_per_alert": {
+  "p05": 118.0,
+  "median": 774.0,
+  "p95": 1645.0,
+  "max": 3009.0,
+  "mean": 811.64775
+ },
+ "history_days_max": 364.99951171875,
+ "size_mean": -5.073647375061451e-12,
+ "size_std": 1.0,
+ "by_quarter": [
+  {
+   "quarter": "2020Q1",
+   "alerts": 2181,
+   "reported": 387,
+   "report_rate": 0.17744154057771663
+  },
+  {
+   "quarter": "2020Q2",
+   "alerts": 2047,
+   "reported": 345,
+   "report_rate": 0.16853932584269662
+  },
+  {
+   "quarter": "2020Q3",
+   "alerts": 3109,
+   "reported": 491,
+   "report_rate": 0.15792859440334514
+  },
+  {
+   "quarter": "2020Q4",
+   "alerts": 3502,
+   "reported": 586,
+   "report_rate": 0.16733295259851513
+  },
+  {
+   "quarter": "2021Q1",
+   "alerts": 3213,
+   "reported": 563,
+   "report_rate": 0.17522564581388111
+  },
+  {
+   "quarter": "2021Q2",
+   "alerts": 2682,
+   "reported": 469,
+   "report_rate": 0.1748695003728561
+  },
+  {
+   "quarter": "2021Q3",
+   "alerts": 1773,
+   "reported": 313,
+   "report_rate": 0.17653694303440495
+  },
+  {
+   "quarter": "2021Q4",
+   "alerts": 1493,
+   "reported": 281,
+   "report_rate": 0.18821165438714
+  }
+ ],
+ "split": {
+  "train": 10839,
+  "valid": 5895,
+  "test": 3266,
+  "unused": 0
+ }
+}
