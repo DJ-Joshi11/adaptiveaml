@@ -8,6 +8,12 @@ import ui
 ex = ui.explain()
 ui.setup("Model Reasoning", "Model", "Which behaviours drive risk scores overall. Per-alert reasons are on the Alert Detail page.")
 
+_c = ex["coefs"]
+_up = [c["label"].lower() for c in _c if c["coef"] > 0 and c["stable"]][:2]
+_dn = [c["label"].lower() for c in _c if c["coef"] < 0 and c["stable"]][:2]
+ui.takeaway([f"What pushes risk <b>up</b>: {', '.join(_up) if _up else 'no stable factor'}.",
+             f"What pulls risk <b>down</b>: {', '.join(_dn) if _dn else 'no stable factor'}.",
+             "Overall the models lean on the <b>size pattern of wire and card transactions</b> far more than on timing or activity bursts."])
 a, b = st.columns(2)
 with a:
     k = ex["coefs"][:15][::-1]

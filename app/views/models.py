@@ -13,7 +13,17 @@ ui.setup("Model Comparison", "Model",
          f"Trained on 2020, tuned and calibrated on early 2021, evaluated once on {ev['n_test']:,} later alerts. "
          f"A random ranking scores PR-AUC {base:.3f}.")
 
+_tied = [x["model"] for x in rows if x.get("tied_with_champion")]
+ui.takeaway([f"Six different ways of learning from the same alerts were tried. The best, <b>{ev['champion']}</b>, ranks alerts "
+             f"<b>{rows[0]['lift']:.1f}×</b> better than random guessing.",
+             (f"{', '.join(_tied)} are statistically tied with it: on this data the choice of method matters less than the features."
+              if _tied else "The leader is clearly ahead of the others."),
+             "Simple, fully explainable models are within touching distance of the best one."])
+ui.plain("**PR-AUC** is a single score for how well a model puts reported alerts near the top of the list: 1.0 would be perfect, and "
+         f"random guessing scores about {base:.2f}. The thin whiskers show the uncertainty: if two whiskers overlap, those two models "
+         "cannot honestly be called different.")
 tabs = st.tabs(["Leaderboard", "Curves", "Significance", "Stability over time", "Ablations", "Tuning"])
+
 
 with tabs[0]:
     left, right = st.columns([3, 2])

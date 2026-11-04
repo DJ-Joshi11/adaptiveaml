@@ -28,6 +28,12 @@ ui.kpi(c[2], "Best combination", f"{best.pr_auc:.3f}", f"{best.model}, {best.var
 bl = R[(R.variant == "Baseline")].pr_auc.max()
 ui.kpi(c[3], "Best baseline (stages 2-7 features)", f"{bl:.3f}", f"no skill {base:.3f}", ui.MUTED)
 st.write("")
+ui.takeaway(["We asked: <b>does knowing an alert's behavioural profile or its regime history make the risk score better?</b>",
+             f"The answer is no: <b>{len(helps)} of 18</b> combinations improved on the original model by more than chance, and adding "
+             "profile features slightly hurt the two linear models.",
+             "Each new signal works a little on its own (right-hand chart) but repeats what the original 86 features already know."])
+ui.plain("Each model is trained four times: with the original features, plus profile features, plus sequence features, and plus both. "
+         "The dot chart shows the change in score against the original. A dot whose line crosses zero means \"no real change\".")
 
 fig = go.Figure()
 for v in variants:

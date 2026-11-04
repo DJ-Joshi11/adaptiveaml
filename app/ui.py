@@ -66,11 +66,11 @@ p, li, label {{ color:#DCE0E8; }}
         padding:16px 18px; height:100%; position:relative; overflow:hidden; animation: rise .5s ease-out both;
         transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }}
 .kpi:hover {{ transform: translateY(-3px); border-color: var(--edge); box-shadow: 0 10px 30px -12px var(--edge); }}
-.kpi .l {{ color:{MUTED}; font-size:.8rem; font-weight:500; }}
+.kpi .l {{ color:{MUTED}; font-size:.8rem; font-weight:500; padding-right:64px; }}
 .kpi .v {{ font-size:1.95rem; font-weight:700; letter-spacing:-0.025em; line-height:1.25; color:#FFFFFF; }}
 .kpi .s {{ color:{MUTED}; font-size:.76rem; }}
 .kpi .bar {{ position:absolute; left:0; top:14px; bottom:14px; width:3px; border-radius:3px; box-shadow: 0 0 12px var(--edge); }}
-.kpi .spark {{ position:absolute; right:14px; top:16px; opacity:.95; }}
+.kpi .spark {{ position:absolute; right:12px; top:14px; opacity:.8; width:60px; pointer-events:none; }}
 .kpi .spark polyline {{ stroke-dasharray: 400; animation: draw 1.4s ease-out both; }}
 .kpi .ringwrap {{ position:absolute; right:14px; top:14px; }}
 .kpi .ringwrap circle.fg {{ animation: ring 1.3s cubic-bezier(.2,.8,.2,1) both; }}
@@ -83,6 +83,11 @@ p, li, label {{ color:#DCE0E8; }}
          border-radius:12px; padding:10px 14px; color:#D5DAE4; font-size:.88rem; margin: 6px 0 14px 0; animation: rise .5s ease-out both; }}
 .pill {{ display:inline-block; padding:2px 10px; border-radius:999px; font-size:.74rem; font-weight:600; border:1px solid; }}
 .warn {{ background:#2A1B10; border:1px solid #6B3A16; color:#FFB58A; border-radius:10px; padding:9px 14px; font-size:.86rem; margin-bottom:14px; }}
+.take {{ background: linear-gradient(120deg, rgba(61,220,151,.10), {CARD} 45%); border:1px solid rgba(61,220,151,.35);
+         border-radius:16px; padding:14px 18px 10px; margin: 4px 0 16px; animation: rise .5s ease-out both; }}
+.take .t {{ color:{GREEN}; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; margin-bottom:6px; }}
+.take ul {{ margin:0; padding-left:18px; }} .take li {{ color:#E6EAF1; font-size:.92rem; margin:3px 0; line-height:1.45; }}
+.take b {{ color:#FFFFFF; }}
 .skel {{ border-radius:16px; border:1px solid {LINE}; background: linear-gradient(90deg,#10131A 0%,#1A1F2B 50%,#10131A 100%);
          background-size: 800px 100%; animation: shimmer 1.2s linear infinite; }}
 div[data-testid="stPlotlyChart"] {{ background:{CARD}; border:1px solid {LINE}; border-radius:16px; padding:8px 8px 0 8px;
@@ -145,6 +150,18 @@ def kpi(col, label_: str, value: str, sub: str = "", color: str = BLUE, count: i
                  unsafe_allow_html=True)
 
 
+def takeaway(points: list[str], title: str = "What this tells us") -> None:
+    """The plain-language conclusion of a section, shown before the detail."""
+    items = "".join(f"<li>{p}</li>" for p in points)
+    st.markdown(f'<div class="take"><div class="t">✦ {title}</div><ul>{items}</ul></div>', unsafe_allow_html=True)
+
+
+def plain(text: str, title: str = "New to this? The idea in plain words") -> None:
+    """A collapsed explanation for readers who do not know the method."""
+    with st.expander(title, icon=":material/lightbulb:"):
+        st.markdown(text)
+
+
 def skeleton(height: int = 360):
     """Shimmering placeholder shown while a heavy chart is being built; returns the slot to fill."""
     slot = st.empty()
@@ -177,7 +194,14 @@ def fig_layout(fig: go.Figure, title: str = "", height: int = 360, **kw) -> go.F
 
 def show(fig: go.Figure, explore: bool = False, slot=None, **kw):
     """Render a chart. `explore=True` keeps the zoom / pan / lasso toolbar for charts meant to be explored."""
-    cfg = {"displayModeBar": True, "displaylogo": False, "modeBarButtonsToRemove": ["toImage"]} if explore else {"displayModeBar": False}
+    if explore:
+        cfg = {"displayModeBar": True, "displaylogo": False, "modeBarButtonsToRemove": ["toImage"]}
+    else:
+        # read-only charts: hover works, but dragging no longer zooms into a box
+        cfg = {"displayModeBar": False, "scrollZoom": False, "doubleClick": False}
+        fig.update_layout(dragmode=False)
+        fig.update_xaxes(fixedrange=True)
+        fig.update_yaxes(fixedrange=True)
     target = slot if slot is not None else st
     return target.plotly_chart(fig, width="stretch", config=cfg, **kw)
 

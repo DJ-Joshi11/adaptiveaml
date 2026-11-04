@@ -25,6 +25,15 @@ ui.kpi(c[2], "Reports caught in flagged set", ui.pct(champ["recall_at_budget"]),
 ui.kpi(c[3], "Ranking quality (PR-AUC)", f"{champ['pr_auc']:.3f}",
        f"{champ['lift']:.1f}x the no-skill level of {ev['base_rate_test']:.3f}", ui.VIOLET, spark=by_q)
 st.write("")
+ui.takeaway([
+    f"About <b>{ev['base_rate_test']:.0%}</b> of alerts end up reported. If analysts open alerts in random order, the first 20% of the queue "
+    f"finds 20% of them; opened in AdaptiveAML's order, the same effort finds <b>{ui.pct(champ['recall_at_budget'])}</b>.",
+    f"That is {champ['recall_at_budget'] / ev['budget']:.1f}× the reported cases for the same analyst time - useful, but not a replacement "
+    "for review: most of the queue still needs a human eye.",
+    "Every number here comes from alerts the model never saw while it was learning."])
+ui.plain("Each alert gets a **risk score** between 0 and 1: the estimated chance it will be reported. Sorting by that score puts the "
+         "likeliest cases first. The **workload curve** below shows how many of the truly reported alerts you find as you work down the "
+         "sorted list; the dotted line is what random order would give.")
 
 left, right = st.columns([3, 2])
 with left:

@@ -20,6 +20,10 @@ st.write("")
 tabs = st.tabs(["Structure and quality", "Class balance", "What separates the classes", "Evidence and belief", "Feature relationships", "Drift"])
 
 with tabs[0]:
+    ui.takeaway([f"Two files joined by alert ID: <b>{dq['n_alerts']:,} alerts</b>, each linked to about {dq['txn_per_alert']['mean']:,.0f} "
+                 "transactions from the year before it was raised.",
+                 "Every quality check passes: nothing missing, no duplicates, no orphan records.",
+                 "Alerts are split <b>by time</b>: the models learn on 2020 and are judged on later 2021 quarters they have never seen."])
     a, b = st.columns(2)
     a.markdown("##### Two linked files")
     a.dataframe(pd.DataFrame([
@@ -46,6 +50,10 @@ with tabs[0]:
             f"deviation {dq['size_std']:.2f}: it is a standardised, relative amount, so it is never summed into money totals.")
 
 with tabs[1]:
+    ui.takeaway([f"Only about <b>{e['prior']:.0%}</b> of alerts end up reported - roughly 1 in {1 / e['prior']:.0f}.",
+                 f"So a lazy model that dismisses everything is {ui.pct(e['accuracy_trap']['accuracy'])} \"accurate\" and useless. "
+                 "That is why every score in this app is about <b>finding the reported ones</b>, not accuracy.",
+                 "The share reported is steady from quarter to quarter, so no quarter is unusual."])
     a, b = st.columns(2)
     bal = e["balance"]
     fig = go.Figure(go.Bar(x=[x["quarter"] for x in bal], y=[x["rate"] for x in bal], marker_color=ui.ORANGE,
@@ -65,10 +73,17 @@ with tabs[1]:
 with tabs[2]:
     mw = pd.DataFrame(e["mannwhitney"])
     k = mw.head(15)[::-1]
+    top = mw.iloc[0]
+    lim = max(0.25, float(mw.effect.abs().max()) * 1.4)
+    ui.takeaway([f"The biggest difference is in <b>{top.label.lower()}</b>: "
+                 f"{'higher' if top.effect > 0 else 'lower'} for reported alerts (median {top.median_report:.2f} vs {top.median_dismiss:.2f}).",
+                 f"But even that difference is <b>small</b>: {abs(top.effect):.2f} on a scale where 0 means no difference and 1 means the groups "
+                 "never overlap. No single behaviour separates reported from dismissed alerts.",
+                 "That is why the models combine many weak clues instead of relying on one rule."])
     fig = go.Figure(go.Bar(x=k.effect, y=k.label, orientation="h", marker_color=[ui.ORANGE if v > 0 else ui.BLUE for v in k.effect]))
     fig.add_vline(x=0, line=dict(color=ui.TEXT, width=1))
     ui.fig_layout(fig, "Which behaviours differ between reported and dismissed alerts", 500,
-                  xaxis=dict(title="Effect size (rank-biserial): orange = higher in reported alerts", range=[-1, 1]),
+                  xaxis=dict(title="Size of difference (blue = higher in dismissed)", range=[-lim, lim]),
                   margin=dict(l=250, r=20, t=48, b=44))
     a, b = st.columns([3, 2])
     with a: ui.show(fig)
@@ -79,8 +94,12 @@ with tabs[2]:
         fig = go.Figure()
         fig.add_scatter(x=mid, y=d["dismiss"], name="Dismissed", mode="lines", line=dict(color=ui.DISMISS, width=2), fill="tozeroy", fillcolor=ui.rgba(ui.DISMISS, 0.18))
         fig.add_scatter(x=mid, y=d["report"], name="Reported", mode="lines", line=dict(color=ui.REPORT, width=2), fill="tozeroy", fillcolor=ui.rgba(ui.REPORT, 0.18))
-        ui.fig_layout(fig, ui.label(feat), 420, yaxis=dict(title="Density"))
+        ov = float(np.minimum(d["report"], d["dismiss"]).sum() / max(np.sum(d["dismiss"]), 1e-12))
+        ui.fig_layout(fig, ui.label(feat), 380, yaxis=dict(title="How common"))
         ui.show(fig)
+        st.markdown(f"<div class='card' style='font-size:.9rem'>The two curves <b>overlap about {min(ov, 1):.0%}</b>. "
+                    f"{'Knowing this value alone tells you almost nothing about the outcome.' if ov > .85 else 'This value helps a little to tell the groups apart.'}"
+                    "</div>", unsafe_allow_html=True)
     sig = int((mw.p_adj < 0.05).sum())
     ui.note(f"{sig} of {len(mw)} behaviours differ significantly after correcting for multiple testing (Mann-Whitney U, "
             "Benjamini-Hochberg). With thousands of alerts almost anything is significant, so behaviours are ranked by effect size, not p-value.")
@@ -92,6 +111,12 @@ with tabs[2]:
                f"Strength of association (Cramér's V) = {ch['cramers_v']:.3f}.")
 
 with tabs[3]:
+    _b = pd.DataFrame(e["bayes"]).iloc[0]
+    ui.takeaway([f"Before looking at anything, an alert has a <b>{e['prior']:.0%}</b> chance of being reported.",
+                 f"Learning that an alert is in the top 10% for <b>{_b.label.lower()}</b> moves that to <b>{_b.posterior:.0%}</b> - "
+                 "the strongest single update, and still a modest one.",
+                 "This is Bayes' rule: start from a prior belief and update it with evidence. The Naive Bayes model does exactly this, "
+                 "for all behaviours at once."])
     by = pd.DataFrame(e["bayes"]).head(12)[::-1]
     fig = go.Figure()
     for _, r in by.iterrows():
@@ -105,10 +130,14 @@ with tabs[3]:
     with b:
         g = e["gaussian"]
         feat = st.selectbox("Bell-curve fit", list(g), format_func=ui.label)
-        st.dataframe(pd.DataFrame([{"Class": k.title(), "Mean": v["mu"], "Std dev": v["sigma"], "Skew": v["skew"],
+        with st.expander("Fitted parameters"):
+          st.dataframe(pd.DataFrame([{"Class": k.title(), "Mean": v["mu"], "Std dev": v["sigma"], "Skew": v["skew"],
                                     "Excess kurtosis": v["kurtosis"]} for k, v in g[feat].items()]),
                      hide_index=True, width="stretch",
                      column_config={k: st.column_config.NumberColumn(format="%.2f") for k in ("Mean", "Std dev", "Skew", "Excess kurtosis")})
+        _g = g[feat]
+        st.markdown(f"<div class='card' style='font-size:.88rem'>Reported and dismissed alerts are centred at {_g['report']['mu']:.2f} and "
+                    f"{_g['dismiss']['mu']:.2f}: the two bell curves almost sit on top of each other.</div>", unsafe_allow_html=True)
         xs = np.linspace(min(v["mu"] - 3.5 * v["sigma"] for v in g[feat].values()), max(v["mu"] + 3.5 * v["sigma"] for v in g[feat].values()), 200)
         fig = go.Figure()
         for k, col in (("dismiss", ui.DISMISS), ("report", ui.REPORT)):
@@ -121,6 +150,13 @@ with tabs[3]:
             "from zero mean the bell-curve assumption is strained for that behaviour, which is where the simplest probabilistic model will struggle.")
 
 with tabs[4]:
+    _p = e["corr_top"][0]
+    ui.takeaway([f"Many behaviours move together - for example <b>{ui.label(_p['a']).lower()}</b> and <b>{ui.label(_p['b']).lower()}</b> "
+                 f"(correlation {_p['rho']:+.2f}). Such pairs carry the same information twice.",
+                 "Models that assume every clue is independent (Naive Bayes) count those clues twice and become over-confident; "
+                 "the regularised models are built to handle it.",
+                 f"Even the best straight-line combination of all behaviours separates the two groups only weakly "
+                 f"(separation score {e['fisher']['criterion']:.2f}; well-separated groups score above 1)."])
     a, b = st.columns([3, 2])
     cm = e["corr"]
     fig = go.Figure(go.Heatmap(z=cm["matrix"], x=[ui.label(f) for f in cm["features"]], y=[ui.label(f) for f in cm["features"]],
@@ -145,6 +181,10 @@ with tabs[4]:
 
 with tabs[5]:
     dr = pd.DataFrame(e["drift"])
+    _n = int((dr.p_adj < 0.05).sum())
+    ui.takeaway([f"<b>{_n} of {len(dr)}</b> behaviours look measurably different in early 2021 than in 2020 (red bars).",
+                 f"The largest shift is in <b>{dr.iloc[0].label.lower()}</b>. Shifts like this are why the models are always "
+                 "judged on later quarters, never on the year they learned from."])
     k = dr.head(15)[::-1]
     fig = go.Figure(go.Bar(x=k.stat, y=k.label, orientation="h", marker_color=[ui.RED if p < 0.05 else ui.rgba(ui.MUTED, 0.6) for p in k.p_adj]))
     ui.fig_layout(fig, "Shift in each behaviour between 2020 and early 2021", 500,

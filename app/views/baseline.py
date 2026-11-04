@@ -22,6 +22,11 @@ ui.kpi(c[2], "Error vs naive rule", f"{100 * (best.rmse_test / naive.rmse_test -
 b = rg["burst_by_class"]["valid"]
 ui.kpi(c[3], "Burst score, reported vs dismissed", f"{b['z_report']:+.2f} / {b['z_dismiss']:+.2f}", "mean, validation quarters", ui.ORANGE)
 st.write("")
+ui.takeaway([f"From a client's first 11 months we can predict how busy their last 30 days will be fairly well "
+             f"(explains {best.r2_test:.0%} of the variation, {abs(100 * (best.rmse_test / naive.rmse_test - 1)):.0f}% less error than "
+             "assuming \"same as before\").",
+             "But being busier or quieter than expected does <b>not</b> make an alert more likely to be reported: the burst score is "
+             "the same for both groups. We report that as a negative result."])
 
 tabs = st.tabs(["Model comparison", "Complexity and regularisation", "Expected vs actual"])
 with tabs[0]:

@@ -67,6 +67,11 @@ ui.fig_layout(fig, "Where your review budget sits on the workload curve", 260, x
               yaxis=dict(tickformat=".0%", title="Reports caught"), margin=dict(l=50, r=20, t=44, b=40))
 ui.show(fig)
 st.write("")
+ui.takeaway([f"At this budget an analyst opens <b>{n_review:,}</b> alerts and finds <b>{ui.pct(caught / total)}</b> of all reported cases; "
+             f"about <b>{ui.pct(caught / max(n_review, 1))}</b> of the alerts they open turn out to be reported, against "
+             f"{ui.pct(full.y.mean())} for the queue as a whole.",
+             "Slide the budget up to catch more cases at the cost of more reviews - the orange dot shows where you are on that trade-off."],
+            "What this budget means")
 
 reveal = st.toggle("Reveal eventual outcome (back-test only)", value=False)
 cols = ["rank", "alert_id", "quarter", "score", "action", "low_confidence"] + (["profile", "regime_name"] if "profile" in D else []) \

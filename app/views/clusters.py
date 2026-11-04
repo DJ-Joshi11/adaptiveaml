@@ -32,6 +32,16 @@ ui.kpi(c[2], "Report rate across profiles", f"{min(rates):.0%} to {max(rates):.0
 ui.kpi(c[3], "Separation (silhouette)", f"{ev['K-Means']['test']['silhouette']:.2f}", "-1 to 1; above 0.5 would be strong", ui.BLUE)
 st.write("")
 
+_lo = min(prof_te, key=lambda p: p["report_rate"])
+_hi = max(prof_te, key=lambda p: p["report_rate"])
+ui.takeaway([f"Alerts fall into <b>{K} broad behavioural profiles</b>, found without ever looking at whether they were reported.",
+             f"The profiles are real but blurry: they overlap a lot (separation {ev['K-Means']['test']['silhouette']:.2f} on a scale "
+             "where 0.5+ would be clear-cut groups).",
+             f"They barely differ in risk: from <b>{_lo['report_rate']:.0%}</b> (P{_lo['cluster'] + 1}) to <b>{_hi['report_rate']:.0%}</b> "
+             f"(P{_hi['cluster'] + 1}) reported, around {base:.0%} overall. Useful to <i>describe</i> clients, not to decide who to escalate."])
+ui.plain("**Clustering** groups alerts that look alike, like sorting customers into segments, without being told which alerts were "
+         "reported. Because 84 behaviours are too many to compare directly, **PCA** first squeezes them into a few summary directions "
+         "that keep most of the information. The map shows every alert on the two most important of those directions.")
 tabs = st.tabs(["Profile map", "Profiles", "How many profiles?", "Latent dimensions", "Hierarchy", "Quality"])
 
 # ---------------------------------------------------------------- map
@@ -98,6 +108,9 @@ with tabs[0]:
 
 # ---------------------------------------------------------------- profiles
 with tabs[1]:
+    ui.takeaway([f"<b>P{_lo['cluster'] + 1}</b> ({_lo['report_rate']:.0%} reported): {_lo['name']}.",
+                 f"<b>P{_hi['cluster'] + 1}</b> ({_hi['report_rate']:.0%} reported): {_hi['name']}.",
+                 "Diamonds (2020) sit close to the bars (2021): the profiles mean the same thing a year later."], "The profiles in words")
     tr_map = {p["cluster"]: p for p in prof_tr}
     fig = go.Figure()
     for p in prof_te:
@@ -132,6 +145,10 @@ with tabs[1]:
 
 # ---------------------------------------------------------------- choosing K
 with tabs[2]:
+    ui.takeaway([f"Three numbers were checked to pick the number of profiles; the clearest split is <b>{K}</b> groups.",
+                 "K-Means puts each alert in exactly one group; the Gaussian mixture gives each alert a probability for every group - "
+                 f"and is usually very sure ({C.gmm_conf.median():.0%} for the typical alert).",
+                 "The mixture keeps preferring more groups the more we allow, a sign there is no small set of natural groups."])
     a, b = st.columns(2)
     el = pd.DataFrame(cl["kmeans"]["elbow"])
     fig = go.Figure()
@@ -169,6 +186,9 @@ with tabs[2]:
 
 # ---------------------------------------------------------------- latent dimensions
 with tabs[3]:
+    ui.takeaway([f"<b>{cl['pca']['d80']}</b> summary directions keep 80% of the information in the 84 behaviours - many behaviours "
+                 "repeat each other.",
+                 f"The single most important direction (PC1, {cl['pca']['ratio'][0]:.0%}) is essentially <b>how large the transactions are</b>."])
     a, b = st.columns(2)
     r = np.array(cl["pca"]["ratio"])
     fig = go.Figure()
@@ -206,6 +226,9 @@ with tabs[3]:
 
 # ---------------------------------------------------------------- hierarchy
 with tabs[4]:
+    ui.takeaway(["A family tree of alerts: similar alerts merge first, and the height of a join shows how different the merged groups are.",
+                 "How you measure \"different\" matters: the simplest rules (single and average link) lump almost everyone into one group; "
+                 "Ward's rule gives balanced groups that agree with K-Means."])
     h = cl["hierarchical"]
     dg = h["dendrogram"]
     fig = go.Figure()
@@ -229,6 +252,9 @@ with tabs[4]:
 
 # ---------------------------------------------------------------- quality
 with tabs[5]:
+    ui.takeaway(["Measured on 2021 alerts, the groups are compact but overlapping, and almost unrelated to the outcome "
+                 f"(mutual information {ev['K-Means']['test']['nmi']:.3f}, where 0 = unrelated).",
+                 "Purity looks high (0.82) only because 82% of all alerts are dismissed - any grouping scores that."])
     rows = []
     for name, v in ev.items():
         if not isinstance(v, dict):

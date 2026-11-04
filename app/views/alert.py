@@ -41,6 +41,10 @@ ui.kpi(c[2], "Strongest reassuring factor", ui.label(down.index[0]),
        f"higher than {ui.pct(pct_of(down.index[0]))} of past alerts" if down.iloc[0] < 0 else "no factor lowers this score", ui.BLUE)
 ui.kpi(c[3], "Transactions in the year", f"{int(f.h_n + f.r_n):,}", f"{int(f.r_n):,} in the last 30 days", ui.CYAN)
 st.write("")
+ui.takeaway([f"This alert is ranked <b>{rank:,} of {len(test):,}</b> with a risk score of <b>{row.risk:.2f}</b> "
+             f"(about {row.risk:.0%} of alerts like it were reported).",
+             f"Biggest reason for concern: <b>{ui.label(up.index[0]).lower()}</b>, higher than {pct_of(up.index[0]):.0%} of past alerts.",
+             f"Biggest reassuring sign: <b>{ui.label(down.index[0]).lower()}</b>."], "This alert in one glance")
 
 left, right = st.columns([2, 3])
 with left:

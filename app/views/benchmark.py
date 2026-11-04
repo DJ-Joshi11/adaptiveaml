@@ -21,6 +21,9 @@ ui.kpi(c[1], "AdaptiveAML, best PR-AUC", f"{bn.pr_auc:.3f}", bn.model, ui.ORANGE
 ui.kpi(c[2], "Existing approach, best ROC-AUC", f"{old.roc_auc.max():.3f}", old.loc[old.roc_auc.idxmax()].model, ui.MUTED)
 ui.kpi(c[3], "AdaptiveAML, best ROC-AUC", f"{new.roc_auc.max():.3f}", new.loc[new.roc_auc.idxmax()].model, ui.BLUE)
 st.write("")
+ui.takeaway([f"The published approach and ours rank alerts about equally well ({bo.pr_auc:.3f} vs {bn.pr_auc:.3f}).",
+             "What AdaptiveAML adds is everything around the score: testing on later quarters, honest uncertainty, calibrated "
+             "probabilities, a review budget and a reason for every alert."])
 
 
 def bars(metric: str, title: str, ref: float):
