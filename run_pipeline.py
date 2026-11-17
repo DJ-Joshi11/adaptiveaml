@@ -4,6 +4,7 @@
     python run_pipeline.py --sample        # all stages on the small test fixture (NOT real results)
     python run_pipeline.py --stage 4 5 6   # only some stages
     python run_pipeline.py --stage 8 9 10  # behavioural profiles, sequence models, feature lab
+    python run_pipeline.py --stage 11 12 13  # ensembles, final comparison, export for the web dashboard
 """
 import argparse
 import importlib
@@ -13,7 +14,8 @@ from adaptiveaml.common import load_config, seed_everything
 
 STAGES = {1: "s01_ingest", 2: "s02_features", 3: "s03_eda", 4: "s04_regression",
           5: "s05_classification", 6: "s06_evaluate", 7: "s07_explain",
-          8: "s08_clustering", 9: "s09_sequences", 10: "s10_compare"}
+          8: "s08_clustering", 9: "s09_sequences", 10: "s10_compare",
+          11: "s11_ensembles", 12: "s12_final", 13: "s13_export"}
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()

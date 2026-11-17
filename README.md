@@ -4,6 +4,10 @@ Explainable alert triage for anti-money-laundering teams. Scores each investigat
 probability of being reported, orders the analyst queue, and shows the behavioural evidence
 behind every score. Built and evaluated on the public SynthAML dataset.
 
+**v3.0 (PBL-3):** ensemble models (stage 11), a 21-model final comparison (stage 12) and a new
+React dashboard in `web/` (stage 13 exports its data). The original Streamlit console in `app/`
+still works for PBL-1/PBL-2 pages but the web dashboard is the primary interface.
+
 ## Quick start (Windows, VS Code terminal)
 
 ```powershell
@@ -78,12 +82,45 @@ python run_pipeline.py --stage 8 9 10
 
 Every model in stages 8-10 is fitted on 2020 alerts only and applied unchanged to 2021.
 
+## PBL-3: ensembles, final comparison, new dashboard
+
+| File | Stage | What it does |
+| --- | --- | --- |
+| `adaptiveaml/adaboost.py` | 11 | AdaBoost written out (Bishop 14.3): weighted error, alpha, weight updates, exponential-loss trace |
+| `adaptiveaml/s11_ensembles.py` | 11 | Random Forest, bagging, XGBoost + TreeSHAP, LightGBM, AdaBoost (ours vs scikit-learn), bias-variance experiment, GAM, voting, out-of-fold stacking across PBL-1/2/3 models, Bayesian model averaging |
+| `adaptiveaml/s12_final.py` | 12 | All 21 models on the same test quarters: bootstrap CIs, paired differences and McNemar vs the PBL-1 champion, champion-challenger promotion rule, final scored queue |
+| `adaptiveaml/s13_export.py` | 13 | Writes the static JSON the dashboard reads into `web/public/data/` |
+| `web/` | | React + TypeScript + Tailwind + Framer Motion + Recharts + Radix dashboard |
+| `tests/test_ensembles.py` | | AdaBoost vs scikit-learn, exponential loss monotone, OOF folds look backwards only, export consistency |
+
+```powershell
+pip install -r requirements.txt          # adds xgboost and lightgbm
+python run_pipeline.py --stage 11 12 13  # ~15-20 min on a laptop (the bias-variance experiment is the slow part)
+pytest -q
+```
+
+### Run the dashboard locally (needs Node.js 20+)
+
+```powershell
+cd web
+npm install
+npm run dev        # http://localhost:5173
+```
+
+### Deploy the dashboard on Vercel
+
+1. Push the repo to GitHub (`web/public/data/` must be committed; `web/node_modules` and `web/dist` are ignored).
+2. On vercel.com: **Add New → Project → Import** the GitHub repo.
+3. Set **Root Directory = `web`**. Framework preset: **Vite** (build `npm run build`, output `dist`).
+4. Deploy. Every later `git push` redeploys automatically. `web/vercel.json` makes deep links like `/alert/19571` work.
+
 ## Evaluation protocol
 
 - Train: 2020 Q1-Q4. Tune, calibrate, set threshold: 2021 Q1-Q2. Final evaluation: 2021 Q3-Q4.
 - Headline metric: PR-AUC with 95% bootstrap intervals. Accuracy is never reported.
 - Operating point: review the top 20% of the queue; cut-off fixed on validation quarters.
 - The model in service is chosen on validation quarters, never on the test quarters.
+- PBL-3 champion-challenger rule: a new model replaces the PBL-1 champion only if its validation PR-AUC lead has a paired bootstrap interval entirely above zero. None did, so the SVM stays in service; the best ensembles tie it on test.
 
 ## Known limitations
 

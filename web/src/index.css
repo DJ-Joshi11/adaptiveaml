@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body { @apply bg-ink-950 text-[#F4F5F6] font-sans antialiased; font-feature-settings: "cv11", "ss01", "tnum"; }
+::selection { background: rgba(182, 242, 74, .35); }
+* { scrollbar-width: thin; scrollbar-color: #2A2D34 transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #2A2D34; border-radius: 8px; }
+
+@layer components {
+  .card { @apply relative rounded-2xl border border-white/[0.06] bg-ink-850/90 shadow-card; }
+  .card-glass { @apply relative rounded-2xl border border-white/[0.07] bg-gradient-to-b from-white/[0.045] to-white/[0.015] backdrop-blur-xl shadow-card; }
+  .inset { @apply rounded-xl border border-white/[0.05] bg-ink-800/80; }
+  .label-caps { @apply text-[11px] font-medium uppercase tracking-[0.14em] text-mute; }
+  .num { font-variant-numeric: tabular-nums; }
+  .hatch { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px); }
+  .skeleton { background: linear-gradient(90deg, #15171B 0%, #1E2026 50%, #15171B 100%); background-size: 800px 100%; @apply animate-shimmer rounded-xl; }
+  .link { @apply text-lime underline-offset-4 hover:underline; }
+  .kbd { @apply rounded-md border border-white/10 bg-ink-700 px-1.5 py-0.5 font-mono text-[10px] text-mute; }
+}
+
+.recharts-cartesian-grid line { stroke: rgba(255,255,255,.05); }
+.recharts-text { fill: #8D929C; font-size: 11px; }
+.recharts-tooltip-cursor { fill: rgba(255,255,255,.03); }
+.recharts-surface:focus, .recharts-wrapper:focus, .recharts-sector:focus, .recharts-rectangle:focus { outline: none; }
+.glow-bg { background: radial-gradient(1200px 500px at 70% -10%, rgba(182,242,74,.07), transparent 60%), radial-gradient(800px 400px at -10% 110%, rgba(77,141,255,.05), transparent 60%); }

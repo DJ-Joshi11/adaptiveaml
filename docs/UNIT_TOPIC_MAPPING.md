@@ -2,6 +2,8 @@
 
 For course evaluation only. None of this wording appears in the product or its code output.
 
+The console referred to below is the React dashboard in `web/` (PBL-3 rebuild). Page names: Overview, Alert Queue, Alert Detail, Cluster Explorer, Sequence Analysis, Model Arena, Ensemble Insights, Data Insights, About & Methodology. PBL-1 and PBL-2 console references (e.g. "Activity Baseline", "Behavioural Profiles", "Feature Lab") now live at: Activity Baseline → Model Arena › Activity baseline; Model Comparison / Benchmark / Model Reasoning → Model Arena tabs; Behavioural Profiles → Cluster Explorer; Feature Lab → Model Arena › Ablations.
+
 | Unit | Topic | Where it appears | How it is used | Evidence |
 | --- | --- | --- | --- | --- |
 | 1 | Supervised learning: regression and classification | Whole pipeline | Expected-activity regression feeds report/dismiss classification | `s04_regression.py`, `s05_classification.py` |
@@ -53,3 +55,43 @@ For course evaluation only. None of this wording appears in the product or its c
 | 4 | Linear dynamical systems | Sequence Analysis > Model fit | Discussed as the continuous-state counterpart (Kalman filter, particle filters); not implemented because the observations are categorical | Console note |
 
 Brute-force checks of the forward pass, the state marginals and Viterbi are in `tests/test_hmm.py`.
+
+
+## PBL-3: Unit 5 (ensemble learning) and the final comparison
+
+| Unit | Topic | Where it appears | How it is used | Evidence |
+| --- | --- | --- | --- | --- |
+| 5 | Combining models: committees | `s11_ensembles.py` (voting) | Equal-weight committee of LR, LDA, SVM, RF, XGBoost on a common z-scored scale | Ensemble Insights › forest plot; Model Arena › Leaderboard (test PR-AUC 0.290) |
+| 5 | Bagging (bootstrap aggregation) | `s11_ensembles.py` | 300 CART trees on bootstrap samples, out-of-bag score; variance reduction measured directly | Ensemble Insights › Bagging vs boosting (deep-tree variance 0.090 → bagged 0.0030) |
+| 5 | Random forests, CART base learner | `s11_ensembles.py` | Gini CART trees + feature subsampling, tuned by forward-chaining; impurity vs permutation importance; OOB check | Ensemble Insights › Random Forest |
+| 5 | Tree-based models / decision trees | `s05_classification.py`, `s11_ensembles.py` | Single tree (PBL-1), stumps (AdaBoost), CART in bagging/forest, shallow trees in boosting | Model Arena › Readable models (tree rules) |
+| 5 | Boosting: AdaBoost | `adaboost.py` (written out), `s11_ensembles.py` | ε_m, α_m = ln((1−ε_m)/ε_m), w_n ← w_n exp(α_m I(miss)); exponential-loss trace; weight snapshots; verified against scikit-learn (rank corr 1.0000) | Ensemble Insights › AdaBoost lab; `tests/test_ensembles.py` |
+| 5 | Minimising exponential error | `adaboost.py` | Exponential loss recorded each round and shown to fall monotonically; w_n ∝ exp(−t_n f_m(x_n)) checked in tests | AdaBoost lab › loss chart |
+| 5 | Gradient boosting (XGBoost, LightGBM) | `s11_ensembles.py` | Depth × rounds tuned by forward-chaining; TreeSHAP per alert (additivity error 8.3e-07) | Ensemble Insights › Gradient boosting; Alert Detail › What drove the score |
+| 5 | Bias–variance of bagging vs boosting | `s11_ensembles.py` | 12 bootstrap refits; squared error split into bias²+noise and variance; performance vs number of estimators | Ensemble Insights › Bagging vs boosting |
+| 5 | Stacking / conditional mixture of models | `s11_ensembles.py` | Meta logistic regression over 7 base learners from all three reviews, trained on out-of-fold (forward-chaining) scores; weight CIs, ablation ladder, leave-one-out, diversity matrix | Ensemble Insights › Stacking |
+| 5 | Bayesian model averaging | `s11_ensembles.py` | Posterior model weights from held-out predictive likelihood; evidence curve shows collapse onto one model; contrasted with ensembles | Ensemble Insights › BMA vs ensembles |
+| 5 | Generalised additive models | `s11_ensembles.py` | Cubic B-spline per feature + penalised logistic regression; shape functions | Model Arena › Readable models |
+| — | Final comparative analysis | `s12_final.py` | 21 models, bootstrap CIs, paired differences and McNemar vs PBL-1 champion, phase winners chosen on validation, champion–challenger promotion rule, per-quarter stability | Model Arena; Overview |
+
+### Final result (test quarters 2021 Q3–Q4, 3,266 alerts, base rate 0.182)
+
+| Phase | Best on validation | Test PR-AUC [95% CI] | vs PBL-1 SVM |
+| --- | --- | --- | --- |
+| PBL-1 | SVM (RBF) | 0.283 [0.262, 0.310] | reference |
+| PBL-2 | SVM + profiles + sequences | 0.283 [0.262, 0.312] | tied |
+| PBL-3 | Bagging (CART) | 0.274 [0.255, 0.299] | tied |
+
+Best test score of any ensemble: Voting committee 0.290 (difference vs SVM +0.007, 95% CI [-0.006, +0.018]). The challenger (Bagging (CART)) was not promoted: its validation lead over the SVM was +0.005 [-0.011, +0.020]. Honest conclusion: ensembles reach the top group but do not beat the PBL-1 SVM by a statistically reliable margin on this data.
+
+## Risk register
+
+| Risk | Level | Mitigation |
+| --- | --- | --- |
+| Synthetic data may not reflect real banks | Medium | Results framed as a method study; protocol transfers unchanged |
+| Weak-signal ceiling (all strong models ≈ 0.28–0.29) | High | Reported honestly; promotion rule prevents shipping noise |
+| Drift between 2020 and 2021 | Medium | Time-based split, per-quarter stability, quarterly retraining |
+| Selecting the validation winner by luck (21 candidates) | Medium | Champion–challenger rule with paired bootstrap on validation |
+| Leakage into the stacker | High if ignored | Out-of-fold, time-forward base predictions only; tests in `test_ensembles.py` |
+| Explanation model ≠ ranking model | Low | XGBoost SHAP shown with its rank agreement to the SVM (0.83); exact LR reasons one click away |
+| Over-trusting a single score | Medium | Calibration, Bayesian uncertainty band, six-model agreement flag on every alert |
